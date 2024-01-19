@@ -660,10 +660,10 @@ function Version(version) end
 ---@class (exact) WebSocket https://www.aseprite.org/api/websocket
 
 ---@class (exact) Window https://www.aseprite.org/api/window
----@field width number Returns the width of the main window.
----@field height number Returns the height of the main window.
----@field events Events Returns the Events object to associate functions that can act like listeners of specific Window events.
-Windows = nil
+---@field width number
+---@field height number
+---@field events Events
+Windows = {}
 
 -- Scripting
 ---@param plugin Plugin
