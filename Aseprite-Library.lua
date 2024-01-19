@@ -433,7 +433,31 @@ ImageSpec = {}
 KeyEvent = {}
 
 ---@class (exact) Layer https://www.aseprite.org/api/layer
-
+---@field sprite Sprite
+---@field name string
+---@field opacity number
+---@field blendMode BlendMode
+---@field layers Layer[] | nil
+---@field parent Sprite | Layer
+---@field stackIndex number
+---@field isImage boolean
+---@field isGroup boolean
+---@field isTilemap boolean
+---@field isTransparent boolean
+---@field isBackground boolean
+---@field isEditable boolean
+---@field isVisible boolean
+---@field isContinuous boolean
+---@field isCollapsed boolean
+---@field isExpanded boolean
+---@field isReference boolean
+---@field cels Cel[]
+---@field color Color
+---@field data string
+---@field properties Properties
+---@field cel fun(layer: Layer, frameNumber: number)
+---@field tileset Tileset
+Layer = {}
 
 ---@class (exact) MouseEvent https://www.aseprite.org/api/mouseevent
 ---@class (exact) Palette https://www.aseprite.org/api/palette
