@@ -607,7 +607,10 @@ Rectangle = {}
 ---@field intersect fun(selection: Selection, other: Rectangle | Selection)
 ---@field contains fun(point: Point) | fun(x: number, y: number): boolean
 Selection = {}
--- TODO CONSTRUCTOR
+
+    ---@return Selection
+    ---@overload fun(rectangle: Rectangle): Selection
+    function Selection() end
 
 ---@class (exact) Site https://www.aseprite.org/api/site
 ---@field sprite Sprite
