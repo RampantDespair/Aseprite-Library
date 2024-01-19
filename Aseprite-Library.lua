@@ -460,6 +460,19 @@ KeyEvent = {}
 Layer = {}
 
 ---@class (exact) MouseEvent https://www.aseprite.org/api/mouseevent
+---@field x number
+---@field y number
+---@field button MouseButton
+---@field pressure number
+---@field deltaX number
+---@field deltaY number
+---@field altKey boolean
+---@field metaKey boolean
+---@field ctrlKey boolean
+---@field shiftKey boolean
+---@field spaceKey boolean
+MouseEvent = {}
+
 ---@class (exact) Palette https://www.aseprite.org/api/palette
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@class (exact) Point https://www.aseprite.org/api/point
