@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias app.pixelColor pixelColor
+
 -- Globals namespaces
 
 ---@class (exact) app https://www.aseprite.org/api/app
@@ -355,7 +357,7 @@ ColorSpace = {}
 ---@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: fun() })
 ---@field check fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: fun() })
 ---@field close fun(dialog: Dialog)
----@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: app.Color, onchange: fun() })
+---@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: Color, onchange: fun() })
 ---@field combobox fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, option: string, options: string[], onchange: fun() })
 ---@field data any
 ---@field bounds Rectangle
