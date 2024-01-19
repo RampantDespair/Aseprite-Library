@@ -474,6 +474,14 @@ Layer = {}
 MouseEvent = {}
 
 ---@class (exact) Palette https://www.aseprite.org/api/palette
+-- TODO Construct
+---@field resize fun(palette: Palette, ncolors: number)
+---@field getColor fun(palette: Palette, index: number): Color
+---@field setColor fun(palette: Palette, index: number, color: Color)
+---@field frame Frame
+---@field saveAs fun(palette: Palette, filename: string)
+Palette = {}
+
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@class (exact) Properties https://www.aseprite.org/api/properties
