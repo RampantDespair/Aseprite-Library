@@ -352,46 +352,46 @@ ColorSpace = {}
     function ColorSpace() end
 
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
----@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: function })
----@field check fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: function })
+---@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: fun() })
+---@field check fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: fun() })
 ---@field close fun(dialog: Dialog)
----@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: app.Color, onchange: function })
----@field combobox fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, option: string, options: string[], onchange: function })
+---@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: app.Color, onchange: fun() })
+---@field combobox fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, option: string, options: string[], onchange: fun() })
 ---@field data any
 ---@field bounds Rectangle
----@field entry fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, focus: boolean, onchange: function })
+---@field entry fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, focus: boolean, onchange: fun() })
 ---@field label fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string })
 ---@field modify fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, visible: boolean, enabled: boolean, text: string })
 ---@field newrow fun(dialog: Dialog) | fun(dialog: Dialog, table: { always: boolean })
----@field number fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, decimals: integer, onchange: function })
----@field radio fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: function })
+---@field number fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, decimals: integer, onchange: fun() })
+---@field radio fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: fun() })
 ---@field separator fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string })
----@field shades fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, mode: "pick" | "sort", colors: Color[], onclick: function })
+---@field shades fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, mode: "pick" | "sort", colors: Color[], onclick: fun() })
 ---@field show fun(dialog: Dialog) | fun(dialog: Dialog, table: { wait: boolean, bounds: Rectangle, autoscrollbars: boolean })
----@field slider fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, min: integer, max: integer, value: integer, onchange: function, onrelease: function })
----@field tab fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string, onclick: function })
----@field endtabs fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, selected: string, align: integer, onchange: function })
----@field file fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, title: string, open: boolean, save: boolean, filename: string | string[], filetypes: string[], onchange: function })
+---@field slider fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, min: integer, max: integer, value: integer, onchange: fun(), onrelease: fun() })
+---@field tab fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string, onclick: fun() })
+---@field endtabs fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, selected: string, align: integer, onchange: fun() })
+---@field file fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, title: string, open: boolean, save: boolean, filename: string | string[], filetypes: string[], onchange: fun() })
 ---@field canvas fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, width: integer, height: integer, autoscaling: boolean, onpaint: fun(ev: any), onkeydown: fun(ev: any), onkeyup: fun(ev: any), onmousemove: fun(ev: any), onmousedown: fun(ev: any), onmouseup: fun(ev: any), ondblclick: fun(ev: any), onwheel: fun(ev: any), ontouchmagnify: fun(ev: any) })
 ---@field repaint fun(dialog: Dialog)
 Dialog = {}
 
     ---@return Dialog
     ---@overload fun(title: string): Dialog
-    ---@overload fun(table: { title: string, notitlebar: boolean, parent: Dialog, onclose: function }): Dialog
+    ---@overload fun(table: { title: string, notitlebar: boolean, parent: Dialog, onclose: fun() }): Dialog
     function Dialog() end
 
 ---@class (exact) Editor https://www.aseprite.org/api/editor
 ---@field sprite Sprite
 ---@field spritePos Point
 ---@field mousePos Point
----@field askPoint fun(editor: Editor, table: { title: string, point: Point, onclick: function, onchange: function, oncancel: function })
+---@field askPoint fun(editor: Editor, table: { title: string, point: Point, onclick: fun(), onchange: fun(), oncancel: fun() })
 ---@field cancel fun(editor: Editor)
 Editor = {}
 
 ---@class (exact) Events https://www.aseprite.org/api/events
----@field on fun(events: Events, eventName: string, function: function): any
----@field off fun(events: Events, function: function) | fun(events: Events, listenerCode: any)
+---@field on fun(events: Events, eventName: string, function: fun()): any
+---@field off fun(events: Events, function: fun()) | fun(events: Events, listenerCode: any)
 Events = {}
 
 ---@class (exact) Frame https://www.aseprite.org/api/frame
@@ -434,7 +434,7 @@ Frame = {}
 GraphicsContext = {}
 
 ---@class (exact) Image https://www.aseprite.org/api/image
----@field clone function
+---@field clone fun(image: Image): Image
 ---@field id number
 ---@field version number
 ---@field width number
@@ -566,7 +566,7 @@ Plugin = {}
     ---@field id string
     ---@field title string
     ---@field group string
-    ---@field onclick function
+    ---@field onclick fun()
     ---@field onenabled fun(): boolean
     newCommandTable = {}
 
@@ -787,7 +787,7 @@ Tileset = {}
 Timer = {}
 
     ---@return Timer
-    ---@overload fun(table: { interval: number, ontick: function }): Timer
+    ---@overload fun(table: { interval: number, ontick: fun() }): Timer
     function Timer() end
 
 ---@class (exact) Tool https://www.aseprite.org/api/tool
