@@ -426,13 +426,13 @@ GraphicsContext = {}
 ---@field isEqual fun(imageA: Image, imageB: Image): boolean
 ---@field isEmpty fun(image: Image): boolean
 ---@field isPlain fun(image: Image, color: Color): boolean
----@field pixels fun(image: Image) | fun(image: Image, rectangle: Rectangle): app.pixelColor[]
+---@field pixels fun(image: Image): app.pixelColor[] | fun(image: Image, rectangle: Rectangle): app.pixelColor[]
 ---@field putPixel fun(image: Image, x: number, y: number, color: Color)
 ---@field putImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
 ---@field putSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
 ---@field saveAs fun(image: Image, filename: string) | fun(image: Image, table: { filename: string, palette: Palette })
 ---@field resize fun(image: Image, width: number, height: number) | fun(image: Image, table: { width: number, height: number, method?: "bilinear" | "rotsprite", pivot?: Point } | { size: Size, method?: "bilinear" | "rotsprite", pivot?: Point })
----@field shrinkBounds fun(image: Image) | fun(image: Image, refColor: Color): Rectangle
+---@field shrinkBounds fun(image: Image): Rectangle | fun(image: Image, refColor: Color): Rectangle
 Image = {}
 
     ---@return Image
