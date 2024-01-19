@@ -491,23 +491,23 @@ Palette = {}
 ---@field newMenuSeparator fun(plugin: Plugin, args: newMenuSeparatorTable)
 Plugin = {}
 
----@class (exact) newCommandTable
----@field id string
----@field title string
----@field group string
----@field onclick function
----@field onenabled fun(): boolean
-newCommandTable = {}
+    ---@class (exact) newCommandTable
+    ---@field id string
+    ---@field title string
+    ---@field group string
+    ---@field onclick function
+    ---@field onenabled fun(): boolean
+    newCommandTable = {}
 
----@class (exact) newMenuGroupTable
----@field id string
----@field title string
----@field group string
-newMenuGroupTable = {}
+    ---@class (exact) newMenuGroupTable
+    ---@field id string
+    ---@field title string
+    ---@field group string
+    newMenuGroupTable = {}
 
----@class (exact) newMenuSeparatorTable
----@field group string
-newMenuSeparatorTable = {}
+    ---@class (exact) newMenuSeparatorTable
+    ---@field group string
+    newMenuSeparatorTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@class (exact) Properties https://www.aseprite.org/api/properties
