@@ -62,7 +62,160 @@ app = {}
 pixelColor = {}
 
 ---@class (exact) command https://www.aseprite.org/api/app_command
--- TODO
+---@field About fun()
+---@field AddColor fun(table: { source: string, color: Color }) https://www.aseprite.org/api/command/AddColor
+---@field AdvancedMode fun()
+---@field AutocropSprite fun()
+---@field BackgroundFromLayer fun()
+---@field BrightnessContrast fun(table: { ui: boolean, channels: FilterChannels, brigthness: number, contrast: number }) https://www.aseprite.org/api/command/BrightnessContrast
+---@field Cancel fun()
+---@field CanvasSize fun(table: { ui: boolean, left: number, top: number, right: number, bottom: number, bounds: Rectangle, trimOutside: boolean }) https://www.aseprite.org/api/command/CanvasSize
+---@field CelOpacity fun(table: { opacity: number }) https://www.aseprite.org/api/command/CelOpacity
+---@field CelProperties fun()
+---@field ChangeBrush fun()
+---@field ChangeColor fun()
+---@field ChangePixelFormat fun(table: { format: "rgb" | "gray" | "indexed", dithering: "ordered" | "old" | "error-diffusion", dithering-matrix: "bayer8x8" | "bayer4x4" | "bayer2x2", rgbmap: "octree" | "rgb5a3" | "default", toGray: "luma" | "hsv" | "hsl" }) https://www.aseprite.org/api/command/ChangePixelFormat
+---@field ClearCel fun()
+---@field Clear fun()
+---@field CloseAllFiles fun()
+---@field CloseFile fun()
+---@field ColorCurve fun(table: { ui: boolean, channels: FilterChannels, curve: Point[]}) https://www.aseprite.org/api/command/ColorCurve
+---@field ColorQuantization fun()
+---@field ContiguousFill fun()
+---@field ConvolutionMatrix fun(table: { ui: boolean, channels: FilterChannels, tiledMode: "none" | "x" | "y" | "both", fromResource: string }) https://www.aseprite.org/api/command/ConvolutionMatrix
+---@field CopyCel fun()
+---@field CopyColors fun(table: { before: number }) https://www.aseprite.org/api/command/CopyColors
+---@field CopyMerged fun()
+---@field Copy fun()
+---@field CropSprite fun()
+---@field Cut fun()
+---@field DeselectMask fun()
+---@field Despeckle fun(table: { ui: boolean, channels: FilterChannels, width: number, height: number, tiledMode: "none" | "x" | "y" | "both" }) https://www.aseprite.org/api/command/Despeckle
+---@field DeveloperConsole fun()
+---@field DiscardBrush fun()
+---@field DuplicateLayer fun()
+---@field DuplicateSprite fun()
+---@field DuplicateView fun()
+---@field Exit fun()
+---@field ExportSpriteSheet fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/ExportTileset TODO
+---@field ExportTileset fun(table: { dataFormat: SpriteSheetDataFormat, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportTileset
+---@field Eyedropper fun()
+---@field Fill fun()
+---@field FitScreen fun()
+---@field FlattenLayers fun()
+---@field Flip fun()
+---@field FrameProperties fun()
+---@field FrameTagProperties fun()
+---@field FullscreenPreview fun()
+---@field GotoFirstFrameInTag fun()
+---@field GotoFirstFrame fun()
+---@field GotoFrame fun()
+---@field GotoLastFrameInTag fun()
+---@field GotoLastFrame fun()
+---@field GotoNextFrameWithSameTag fun()
+---@field GotoNextFrame fun()
+---@field GotoNextLayer fun()
+---@field GotoNextTab fun()
+---@field GotoPreviousFrameWithSameTag fun()
+---@field GotoPreviousFrame fun()
+---@field GotoPreviousLayer fun()
+---@field GotoPreviousTab fun()
+---@field GridSettings fun()
+---@field Home fun()
+---@field HueSaturation fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/HueSaturation TODO
+---@field ImportSpriteSheet fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/ImportSpriteSheet TODO
+---@field InvertColor fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/InvertColor TODO
+---@field InvertMask fun()
+---@field KeyboardShortcuts fun()
+---@field Launch fun()
+---@field LayerFromBackground fun()
+---@field LayerLock fun()
+---@field LayerOpacity fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/LayerOpacity TODO
+---@field LayerProperties fun()
+---@field LayerVisibility fun()
+---@field LinkCels fun()
+---@field LoadMask fun()
+---@field LoadPalette fun()
+---@field MaskAll fun()
+---@field MaskByColor fun()
+---@field MaskContent fun()
+---@field MergeDownLayer fun()
+---@field ModifySelection fun()
+---@field MoveCel fun()
+---@field MoveColors fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/MoveColors TODO
+---@field MoveMask fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/MoveMask TODO
+---@field NewBrush fun()
+---@field NewFile fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/NewFile TODO
+---@field NewFrameTag fun()
+---@field NewFrame fun()
+---@field NewLayer fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/NewLayer TODO
+---@field NewSpriteFromSelection fun()
+---@field OpenBrowser fun()
+---@field OpenFile fun()
+---@field OpenGroup fun()
+---@field OpenInFolder fun()
+---@field OpenScriptFolder fun()
+---@field OpenWithApp fun()
+---@field Options fun()
+---@field Outline fun(table: { ui: boolean, channels: FilterChannels, place: "inside" | "outside", matrix: "circle" | "square" | "horizontal" | "vertical", color: Color, bgColor: Color, tiledMode: "none" | "x" | "y" | "both" }) https://www.aseprite.org/api/command/Outline
+---@field PaletteEditor fun()
+---@field PaletteSize fun()
+---@field PasteText fun()
+---@field Paste fun()
+---@field PixelPerfectMode fun()
+---@field PlayAnimation fun()
+---@field PlayPreviewAnimation fun()
+---@field Redo fun()
+---@field Refresh fun()
+---@field RemoveFrameTag fun()
+---@field RemoveFrame fun()
+---@field RemoveLayer fun()
+---@field RemoveSlice fun()
+---@field RepeatLastExport fun()
+---@field ReplaceColor fun(table: { ui: boolean, channels: FilterChannels, from: Color, to: Color, tolerance: number }) https://www.aseprite.org/api/command/ReplaceColor
+---@field ReselectMask fun()
+---@field ReverseFrames fun()
+---@field Rotate fun()
+---@field RunScript fun()
+---@field SaveFile fun(table: { ui: boolean, filename: string, filenameFormat: string, tag: string, aniDir: AniDir, slice: string, fromFrame: Frame, toFrame: Frame, ignoreEmpty: boolean, bounds: Rectangle }) https://www.aseprite.org/api/command/SaveFile
+---@field SaveFileAs fun(table: { ui: boolean, filename: string, filenameFormat: string, tag: string, aniDir: AniDir, slice: string, fromFrame: Frame, toFrame: Frame, ignoreEmpty: boolean, bounds: Rectangle }) https://www.aseprite.org/api/command/SaveFile
+---@field SaveFileCopyAs fun(table: { ui: boolean, filename: string, filenameFormat: string, tag: string, aniDir: AniDir, slice: string, fromFrame: Frame, toFrame: Frame, ignoreEmpty: boolean, bounds: Rectangle }) https://www.aseprite.org/api/command/SaveFile
+---@field SaveMask fun()
+---@field SavePalette fun()
+---@field ScrollCenter fun()
+---@field Scroll fun()
+---@field SelectTile fun()
+---@field SelectionAsGrid fun()
+---@field SetColorSelector fun()
+---@field SetInkType fun(table: { type: Ink }) https://www.aseprite.org/api/command/SetInkType
+---@field SetLoopSection fun()
+---@field SetPaletteEntrySize fun()
+---@field SetPalette fun()
+---@field SetSameInk fun()
+---@field ShowAutoGuides fun()
+---@field ShowBrushPreview fun()
+---@field ShowExtras fun()
+---@field ShowGrid fun()
+---@field ShowLayerEdges fun()
+---@field ShowOnionSkin fun()
+---@field ShowPixelGrid fun()
+---@field ShowSelectionEdges fun()
+---@field ShowSlices fun()
+---@field SliceProperties fun()
+---@field SnapToGrid fun()
+---@field SpriteProperties fun()
+---@field SpriteSize fun(table: { ui: boolean, width: number, height: number, scale: number, scaleX: number, scaleY: number, lockRatio: boolean, method: "nearest" | "bilinear" | "rotSprite" }) https://www.aseprite.org/api/command/SpriteSize
+---@field Stroke fun()
+---@field SwitchColors fun()
+---@field SymmetryMode fun()
+---@field TiledMode fun()
+---@field Timeline fun()
+---@field TogglePreview fun()
+---@field ToggleTimelineThumbnails fun()
+---@field UndoHistory fun()
+---@field Undo fun()
+---@field UnlinkCel fun()
+---@field Zoom fun()
 command = {}
 
 ---@class (exact) preferences https://www.aseprite.org/api/app_preferences
