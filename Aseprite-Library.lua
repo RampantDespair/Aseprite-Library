@@ -418,7 +418,7 @@ GraphicsContext = {}
 ---@field bytes string
 ---@field rowStride number
 ---@field bytesPerPixel number
----@field clear function -- ?
+---@field clear fun(image: Image, bounds: Rectangle, color: Color)
 ---@field drawPixel fun(image: Image, x: number, y: number, color: Color)
 ---@field getPixel fun(image: Image, x: number, y: number): app.pixelColor
 ---@field drawImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
