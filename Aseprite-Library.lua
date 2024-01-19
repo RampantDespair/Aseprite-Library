@@ -23,17 +23,18 @@
 ---@field isUIAvailable boolean
 ---@field sprites Sprite[]
 ---@field params table
----@field alert fun(title: string | { title: string, text?: string | string[], buttons?: string | string[] }, text?: string | string[], buttons?: string | string[])
+---@field alert fun(title: string) | fun(table: { title: string, text: string | string[], buttons: string | string[] })
 ---@field open fun(filename: string): Sprite | nil
----@field exit function
----@field transaction fun(text?: string, function: function)
+---@field exit fun()
+---@field transaction fun(text?: string, function: fun())
 ---@field command command
 ---@field preferences preferences
 ---@field fs fs
 ---@field theme theme
 ---@field uiScale number
----@field refresh function
----@field undo function
+---@field refresh fun()
+---@field undo fun()
+---@field redo fun()
 ---@field useTool fun(tool: string | Tool, color: Color, bgColor: Color, brush: Brush, points: Point[], cel: Cel, layer: Layer, frame: Frame, ink: Ink, button: MouseButton.LEFT | MouseButton.RIGHT, opacity: integer, contiguous: boolean, tolerance: integer, freehandAlgorithm: 0 | 1, selection: SelectionMode.REPLACE | SelectionMode.ADD | SelectionMode.SUBTRACT | SelectionMode.INTERSECT, tilemapMode: TilemapMode.PIXELS | TilemapMode.TILES, tilesetMode: TilesetMode.MANUAL | TilesetMode.AUTO | TilesetMode.STACK)
 ---@field events Events
 -- @deprecated
