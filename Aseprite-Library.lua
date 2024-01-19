@@ -329,7 +329,17 @@ Cel = {}
 ---@field rgbaPixel pixelColor
 ---@field grayPixel pixelColor
 Color = {}
--- TODO CONSTRUCTOR
+
+    ---@return Color
+    ---@overload fun(index: integer): Color
+    ---@overload fun(table: { r: number, g: number, b: number, a: number }): Color
+    ---@overload fun(table: { h: number, s: number, v: number, a: Image }): Color
+    ---@overload fun(table: { h: number, s: number, l: number, a: Image }): Color
+    ---@overload fun(table: { red: number, green: number, blue: number, alpha: number}): Color
+    ---@overload fun(table: { hue: number, saturation: number, value: number, alpha: number }): Color
+    ---@overload fun(table: { hue: number, saturation: number, lightness: number, alpha: number }): Color
+    ---@overload fun(table: { index: number }): Color
+    function Color() end
 
 ---@class (exact) ColorSpace https://www.aseprite.org/api/colorspace
 ---@field name string
