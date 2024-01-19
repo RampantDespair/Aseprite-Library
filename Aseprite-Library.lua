@@ -720,7 +720,16 @@ Version = {}
     function Version(version) end
 
 ---@class (exact) WebSocket https://www.aseprite.org/api/websocket
--- TODO
+---@field url string
+---@field connect fun(webSocket: WebSocket): WebSocketMessageType
+---@field close fun(webSocket: WebSocket): WebSocketMessageType
+---@field sendText fun(webSocket: WebSocket, str: string, ...: string)
+---@field sendBinary fun(webSocket: WebSocket, bstr: string, ...: string)
+---@field sendPing fun(webSocket: WebSocket, str: string): string
+
+    ---@return WebSocket
+    ---@overload fun(table: { url: string, onreceive: fun(message: string, data: any), deflate: boolean, minreconnectwait: number, maxreconnectwait: number }): WebSocket
+    function WebSocket() end
 
 ---@class (exact) Window https://www.aseprite.org/api/window
 ---@field width number
