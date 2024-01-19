@@ -362,8 +362,8 @@ ColorSpace = {}
 Editor = {}
 
 ---@class (exact) Events https://www.aseprite.org/api/events
----@field on function
----@field off function
+---@field on fun(events: Events, eventName: string, function: function): any
+---@field off fun(events: Events, function: function) | fun(events: Events, listenerCode: any)
 Events = {}
 
 ---@class (exact) Frame https://www.aseprite.org/api/frame
