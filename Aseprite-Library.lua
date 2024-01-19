@@ -454,7 +454,7 @@ ImageSpec = {}
 ---@field ctrlKey boolean
 ---@field shiftKey boolean
 ---@field spaceKey boolean
----@field stopPropagation function
+---@field stopPropagation fun(keyEvent: KeyEvent)
 KeyEvent = {}
 
 ---@class (exact) Layer https://www.aseprite.org/api/layer
