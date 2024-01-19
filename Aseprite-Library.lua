@@ -572,7 +572,7 @@ Selection = {}
 ---@field frame Frame
 ---@field frameNumber number
 ---@field image Image
-Site = nil
+Site = {}
 
 ---@class (exact) Size https://www.aseprite.org/api/size
 ---@field width number
