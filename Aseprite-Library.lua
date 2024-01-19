@@ -726,6 +726,7 @@ Version = {}
 ---@field sendText fun(webSocket: WebSocket, str: string, ...: string)
 ---@field sendBinary fun(webSocket: WebSocket, bstr: string, ...: string)
 ---@field sendPing fun(webSocket: WebSocket, str: string): string
+WebSocket = {}
 
     ---@return WebSocket
     ---@overload fun(table: { url: string, onreceive: fun(message: string, data: any), deflate: boolean, minreconnectwait: number, maxreconnectwait: number }): WebSocket
