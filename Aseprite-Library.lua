@@ -97,8 +97,8 @@ fs = {}
 theme = {}
 
 ---@class (exact) json https://www.aseprite.org/api/json
----@field decode function
----@field encode function
+---@field decode fun(jsonText: string): any
+---@field encode fun(object: any): string
 json = {}
 
 -- Constants
