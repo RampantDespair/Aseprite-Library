@@ -344,7 +344,11 @@ Color = {}
 ---@class (exact) ColorSpace https://www.aseprite.org/api/colorspace
 ---@field name string
 ColorSpace = {}
--- TODO CONSTRUCTOR
+
+    ---@return ColorSpace
+    ---@overload fun(table: { sRGB: boolean }): ColorSpace
+    ---@overload fun(table: { fromFile: string }): ColorSpace
+    function ColorSpace() end
 
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
 -- TODO
