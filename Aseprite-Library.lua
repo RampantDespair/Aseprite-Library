@@ -699,7 +699,8 @@ Tileset = {}
 -- TODO
 
 ---@class (exact) Tool https://www.aseprite.org/api/tool
--- TODO
+---@field id string
+Tool = {}
 
 ---@class (exact) TouchEvent https://www.aseprite.org/api/touchevent
 ---@field x number
