@@ -26,6 +26,7 @@
 ## About The Project
 
 This project was made to remove the hassle of having to constantly look for functions on the [api page](https://www.aseprite.org/api).
+<br>
 With that in mind, this lua library lets view functions and fields on your project itself.
 
 <!-- INSTALLATION -->
@@ -33,15 +34,23 @@ With that in mind, this lua library lets view functions and fields on your proje
 
 1.  Download the [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension on the VSCode Marketplace
 
-From there you have 2 choices:
+From here you have 2 choices:
 
 2.  Download the [library file](https://github.com/RampantDespair/Aseprite-Library/blob/main/Aseprite-Library.lua) and paste it into your project anywhere
 
-OR (Better)
+OR (Better, because using this method will make you able to stay synced to this repository.)
 
 2.  Add the [Aseprite-Library](https://github.com/RampantDespair/Aseprite-Library) repository as a submodule to your project by running the following command `git submodule add https://github.com/RampantDespair/Aseprite-Library lib/Aseprite-Library`
 
-Using the second method will make you able to pull the repository if/when new things are added/changed on this repository.
+3.  Add the following to your `.vscode\settings.json` file (if it doesn't exist, just create it)
+```json
+{
+    "Lua.workspace.library": [
+        "lib\\Aseprite-Library\\Aseprite-Library.lua"
+    ]
+}
+```
+4.  Start writing your script :)
 
 <!-- IMPORTANT -->
 ## Important
@@ -52,7 +61,9 @@ Do not import the library file into your actual script (dofile/require), because
 ## Contributing
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request.
+<br>
 You can also simply open an issue with the tag "enhancement".
+<br>
 Any contributions you make are **greatly appreciated**.
 
 <!-- ACKNOWLEDGMENTS -->
