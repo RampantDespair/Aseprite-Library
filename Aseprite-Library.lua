@@ -519,6 +519,21 @@ Point = {}
 Properties = {}
 
 ---@class (exact) Range https://www.aseprite.org/api/range
+---@field type RangeType
+---@field isEmpty boolean
+---@field sprite Sprite
+---@field layers Layer[]
+---@field frames Frame[]
+---@field cels Cel[]
+---@field images Image[]
+---@field editableImages Image[]
+---@field colors Color[]
+---@field slices Slice[]
+---@field contains fun(range: Range, object: Layer | Frame | Cel | Slice): boolean
+---@field containsColor fun(range: Range, colorIndex: number): boolean
+---@field clear fun(range: Range)
+Range = {}
+
 ---@class (exact) Rectangle https://www.aseprite.org/api/rectangle
 ---@class (exact) Selection https://www.aseprite.org/api/selection
 
