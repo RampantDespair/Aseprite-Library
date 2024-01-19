@@ -483,6 +483,32 @@ MouseEvent = {}
 Palette = {}
 
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
+---@field name string
+---@field path string
+---@field preferences table
+---@field newCommand fun(plugin: Plugin, args: newCommandTable)
+---@field newMenuGroup fun(plugin: Plugin, args: newMenuGroupTable)
+---@field newMenuSeparator fun(plugin: Plugin, args: newMenuSeparatorTable)
+Plugin = {}
+
+---@class (exact) newCommandTable
+---@field id string
+---@field title string
+---@field group string
+---@field onclick function
+---@field onenabled fun(): boolean
+newCommandTable = {}
+
+---@class (exact) newMenuGroupTable
+---@field id string
+---@field title string
+---@field group string
+newMenuGroupTable = {}
+
+---@class (exact) newMenuSeparatorTable
+---@field group string
+newMenuSeparatorTable = {}
+
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@class (exact) Properties https://www.aseprite.org/api/properties
 ---@class (exact) Range https://www.aseprite.org/api/range
@@ -590,35 +616,8 @@ function Version(version) end
 Windows = nil
 
 -- Scripting
----@class (exact) plugin https://github.com/aseprite/api/blob/main/api/plugin.md#plugin
----@field name string
----@field path string
----@field preferences table
----@field newCommand fun(plugin: plugin, args: newCommandTable)
----@field newMenuGroup fun(plugin: plugin, args: newMenuGroupTable)
----@field newMenuSeparator fun(plugin: plugin, args: newMenuSeparatorTable)
-plugin = {}
-
----@class (exact) newCommandTable
----@field id string
----@field title string
----@field group string
----@field onclick function
----@field onenabled fun(): boolean
-newCommandTable = {}
-
----@class (exact) newMenuGroupTable
----@field id string
----@field title string
----@field group string
-newMenuGroupTable = {}
-
----@class (exact) newMenuSeparatorTable
----@field group string
-newMenuSeparatorTable = {}
-
----@param plugin plugin
+---@param plugin Plugin
 function init(plugin) end
 
----@param plugin plugin
+---@param plugin Plugin
 function exit(plugin) end
