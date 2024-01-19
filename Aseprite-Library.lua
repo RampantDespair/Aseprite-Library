@@ -535,6 +535,22 @@ Properties = {}
 Range = {}
 
 ---@class (exact) Rectangle https://www.aseprite.org/api/rectangle
+-- TODO Construct
+---@field x number
+---@field y number
+---@field width number
+---@field height number
+---@field w number
+---@field h number
+---@field origin Point
+---@field size Size
+---@field isEmpty boolean
+---@field contains fun(rectangle: Rectangle, otherRectangle: Rectangle): boolean
+---@field intersects fun(rectangle: Rectangle, otherRectangle: Rectangle): boolean
+---@field intersect fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
+---@field union fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
+Rectangle = {}
+
 ---@class (exact) Selection https://www.aseprite.org/api/selection
 
 ---@class (exact) Site https://www.aseprite.org/api/site
