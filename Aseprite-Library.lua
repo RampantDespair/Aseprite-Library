@@ -1,6 +1,7 @@
 ---@meta
 
 -- Globals namespaces
+
 ---@class (exact) app https://www.aseprite.org/api/app
 ---@field site Site
 ---@field range Range
@@ -286,6 +287,7 @@ WebSocketMessageType = {
 ---@field pattern BrushPattern
 ---@field patternOrigin Point
 Brush = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Cel https://www.aseprite.org/api/cel
 ---@field sprite Sprite
@@ -322,10 +324,12 @@ Cel = {}
 ---@field rgbaPixel pixelColor
 ---@field grayPixel pixelColor
 Color = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) ColorSpace https://www.aseprite.org/api/colorspace
 ---@field name string
 ColorSpace = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
 -- TODO
@@ -411,6 +415,7 @@ GraphicsContext = {}
 ---@field resize function
 ---@field shrinkBounds function
 Image = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) ImageSpec https://www.aseprite.org/api/imagespec
 ---@field colorMode ColorMode
@@ -419,6 +424,7 @@ Image = {}
 ---@field colorSpace ColorSpace
 ---@field transparentColor number
 ImageSpec = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) KeyEvent https://www.aseprite.org/api/keyevent
 ---@field repeatCount number
@@ -474,13 +480,13 @@ Layer = {}
 MouseEvent = {}
 
 ---@class (exact) Palette https://www.aseprite.org/api/palette
--- TODO Construct
 ---@field resize fun(palette: Palette, ncolors: number)
 ---@field getColor fun(palette: Palette, index: number): Color
 ---@field setColor fun(palette: Palette, index: number, color: Color)
 ---@field frame Frame
 ---@field saveAs fun(palette: Palette, filename: string)
 Palette = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@field name string
@@ -510,10 +516,10 @@ Plugin = {}
     newMenuSeparatorTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
--- TODO Construct
 ---@field x number
 ---@field y number
 Point = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Properties https://www.aseprite.org/api/properties
 Properties = {}
@@ -535,7 +541,6 @@ Properties = {}
 Range = {}
 
 ---@class (exact) Rectangle https://www.aseprite.org/api/rectangle
--- TODO Construct
 ---@field x number
 ---@field y number
 ---@field width number
@@ -550,9 +555,9 @@ Range = {}
 ---@field intersect fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
 ---@field union fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
 Rectangle = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Selection https://www.aseprite.org/api/selection
--- TODO Construct
 ---@field bounds Rectangle
 ---@field origin Point
 ---@field isEmpty boolean
@@ -564,6 +569,7 @@ Rectangle = {}
 ---@field intersect fun(selection: Selection, other: Rectangle | Selection)
 ---@field contains fun(point: Point) | fun(x: number, y: number): boolean
 Selection = {}
+-- TODO CONSTRUCTOR
 
 ---@class (exact) Site https://www.aseprite.org/api/site
 ---@field sprite Sprite
@@ -582,13 +588,13 @@ Site = {}
 ---@field union fun(otherSize: Size): Size
 Size = {}
 
----@return Size
----@overload fun(otherSize: Size): Size
----@overload fun(width: number, height: number): Size
----@overload fun(table: { width: number, height: number }): Size
----@overload fun(table: { w: number, h: number }): Size
----@overload fun(table: number[]): Size
-function Size() end
+    ---@return Size
+    ---@overload fun(otherSize: Size): Size
+    ---@overload fun(width: number, height: number): Size
+    ---@overload fun(table: { width: number, height: number }): Size
+    ---@overload fun(table: { w: number, h: number }): Size
+    ---@overload fun(table: number[]): Size
+    function Size() end
 
 ---@class (exact) Slice https://www.aseprite.org/api/slice
 ---@field bounds Rectangle
@@ -602,7 +608,7 @@ function Size() end
 Slice = {}
 
 ---@class (exact) Sprite https://www.aseprite.org/api/sprite
-
+-- TODO
 
 ---@class (exact) Tag https://www.aseprite.org/api/tag
 ---@field sprite Sprite
@@ -637,7 +643,10 @@ Tile = {}
 Tileset = {}
 
 ---@class (exact) Timer https://www.aseprite.org/api/timer
+-- TODO
+
 ---@class (exact) Tool https://www.aseprite.org/api/tool
+-- TODO
 
 ---@class (exact) TouchEvent https://www.aseprite.org/api/touchevent
 ---@field x number
@@ -653,17 +662,18 @@ TouchEvent = {}
 ---@field prereleaseNumber number
 Version = {}
 
----@param version string
----@return Version 
-function Version(version) end
+    ---@param version string
+    ---@return Version 
+    function Version(version) end
 
 ---@class (exact) WebSocket https://www.aseprite.org/api/websocket
+-- TODO
 
 ---@class (exact) Window https://www.aseprite.org/api/window
 ---@field width number
 ---@field height number
 ---@field events Events
-Windows = {}
+Window = {}
 
 -- Scripting
 ---@param plugin Plugin
