@@ -696,7 +696,15 @@ Tile = {}
 Tileset = {}
 
 ---@class (exact) Timer https://www.aseprite.org/api/timer
--- TODO
+---@field start fun(timer: Timer)
+---@field stop fun(timer: Timer)
+---@field interval number
+---@field isRunning boolean
+Timer = {}
+
+    ---@return Timer
+    ---@overload fun(table: { interval: number, ontick: function }): Timer
+    function Timer() end
 
 ---@class (exact) Tool https://www.aseprite.org/api/tool
 ---@field id string
