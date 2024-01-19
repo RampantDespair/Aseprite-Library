@@ -356,7 +356,7 @@ ColorSpace = {}
 ---@field close fun(dialog: Dialog)
 ---@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: app.Color, onchange: function })
 ---@field combobox fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, option: string, options: string[], onchange: function })
----@field data boolean | string | integer | Color | Color[]
+---@field data any
 ---@field bounds Rectangle
 ---@field entry fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, focus: boolean, onchange: function })
 ---@field label fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string })
