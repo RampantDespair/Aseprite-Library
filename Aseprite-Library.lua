@@ -454,7 +454,7 @@ ImageSpec = {}
 
     ---@return ImageSpec
     ---@overload fun(otherImageSpec: ImageSpec): ImageSpec
-    ---@overload fun(table: { width: number, height: number, colorMode: number, transparentColor: number }): ImageSpec
+    ---@overload fun(table: { width: number, height: number, colorMode: ColorMode, transparentColor: number }): ImageSpec
     function ImageSpec() end
 
 ---@class (exact) KeyEvent https://www.aseprite.org/api/keyevent
