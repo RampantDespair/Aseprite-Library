@@ -510,6 +510,11 @@ Plugin = {}
     newMenuSeparatorTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
+-- TODO Construct
+---@field x number
+---@field y number
+Point = {}
+
 ---@class (exact) Properties https://www.aseprite.org/api/properties
 ---@class (exact) Range https://www.aseprite.org/api/range
 ---@class (exact) Rectangle https://www.aseprite.org/api/rectangle
