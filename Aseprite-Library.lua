@@ -357,8 +357,8 @@ ColorSpace = {}
 ---@field sprite Sprite
 ---@field spritePos Point
 ---@field mousePos Point
----@field askPoint function
----@field cancel function
+---@field askPoint fun(editor: Editor, table: { title: string, point: Point, onclick: function, onchange: function, oncancel: function })
+---@field cancel fun(editor: Editor)
 Editor = {}
 
 ---@class (exact) Events https://www.aseprite.org/api/events
