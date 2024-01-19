@@ -49,13 +49,13 @@ app = {}
 
 ---@class (exact) pixelColor https://www.aseprite.org/api/pixelcolor
 ---@field rgba fun(red: number, green: number, blue: number, alpha?: number): Color
----@field rgbaR function
----@field rgbaG function
----@field rgbaB function
----@field rgbaA function
----@field graya function
----@field grayaV function
----@field grayaA function
+---@field rgbaR fun(rgbaPixelValue: any): integer
+---@field rgbaG fun(rgbaPixelValue: any): integer
+---@field rgbaB fun(rgbaPixelValue: any): integer
+---@field rgbaA fun(rgbaPixelValue: any): integer
+---@field graya fun(gray: number, alpha?: number): integer
+---@field grayaV fun(grayPixelValue: any): integer
+---@field grayaA fun(grayPixelValue: any): integer
 pixelColor = {}
 
 ---@class (exact) command https://www.aseprite.org/api/app_command
