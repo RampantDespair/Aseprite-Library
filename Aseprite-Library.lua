@@ -662,8 +662,8 @@ TouchEvent = {}
 ---@field prereleaseNumber number
 Version = {}
 
-    ---@param version string
     ---@return Version 
+    ---@param version string
     function Version(version) end
 
 ---@class (exact) WebSocket https://www.aseprite.org/api/websocket
