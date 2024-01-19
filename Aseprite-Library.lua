@@ -63,8 +63,8 @@ pixelColor = {}
 command = {}
 
 ---@class (exact) preferences https://www.aseprite.org/api/app_preferences
----@field tool function
----@field document function
+---@field tool fun(tool: Tool): any
+---@field document fun(sprite: Sprite): any
 preferences = {}
 
 ---@class (exact) fs https://www.aseprite.org/api/app_fs
