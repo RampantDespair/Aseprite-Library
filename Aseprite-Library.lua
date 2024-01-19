@@ -646,7 +646,7 @@ Size = {}
     ---@overload fun(width: number, height: number): Size
     ---@overload fun(table: { width: number, height: number }): Size
     ---@overload fun(table: { w: number, h: number }): Size
-    ---@overload fun(table: number[]): Size
+    ---@overload fun(array: number[]): Size
     function Size() end
 
 ---@class (exact) Slice https://www.aseprite.org/api/slice
