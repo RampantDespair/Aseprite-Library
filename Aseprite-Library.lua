@@ -516,6 +516,8 @@ Plugin = {}
 Point = {}
 
 ---@class (exact) Properties https://www.aseprite.org/api/properties
+Properties = {}
+
 ---@class (exact) Range https://www.aseprite.org/api/range
 ---@class (exact) Rectangle https://www.aseprite.org/api/rectangle
 ---@class (exact) Selection https://www.aseprite.org/api/selection
