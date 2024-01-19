@@ -383,26 +383,26 @@ Frame = {}
 ---@field blendMode BlendMode
 ---@field opacity number
 ---@field theme theme
----@field save function
----@field restore function
----@field clip function
----@field strokeRect function
----@field fillRect function
----@field fillText function
----@field measureText function
----@field drawImage function
----@field drawThemeImage function
----@field drawThemeRect function
----@field beginPath function
----@field closePath function
----@field moveTo function
----@field lineTo function
----@field cubicTo function
----@field oval function
----@field rect function
----@field roundedRect function
----@field stroke function
----@field fill function
+---@field save fun(graphicsContext: GraphicsContext)
+---@field restore fun(graphicsContext: GraphicsContext)
+---@field clip fun(graphicsContext: GraphicsContext)
+---@field strokeRect fun(graphicsContext: GraphicsContext, rectangle: Rectangle)
+---@field fillRect fun(graphicsContext: GraphicsContext, rectangle: Rectangle)
+---@field fillText fun(graphicsContext: GraphicsContext, text: string, x: number, y: number)
+---@field measureText fun(graphicsContext: GraphicsContext, text: string)
+---@field drawImage fun(graphicsContext: GraphicsContext, image: Image, x: number, y: number) | fun(graphicsContext: GraphicsContext, image: Image, srcRect: Rectangle, dstRect: Rectangle) | fun(graphicsContext: GraphicsContext, image: Image, srcX: number, srcY: number, srcW: number, srcH: number, dstX: number, dstY: number, dstW: number, dstH: number)
+---@field drawThemeImage fun(graphicsContext: GraphicsContext, partId: any, point: Point) | fun(graphicsContext: GraphicsContext, partId: any, x: number, y: number)
+---@field drawThemeRect fun(graphicsContext: GraphicsContext, partId: any, rectangle: Rectangle) | fun(graphicsContext: GraphicsContext, partId: any, x: number, y: number, w: number, h:number)
+---@field beginPath fun(graphicsContext: GraphicsContext)
+---@field closePath fun(graphicsContext: GraphicsContext)
+---@field moveTo fun(graphicsContext: GraphicsContext, x: number, y: number)
+---@field lineTo fun(graphicsContext: GraphicsContext, x: number, y: number)
+---@field cubicTo fun(graphicsContext: GraphicsContext, cp1x: number, cp1y: number, cp2x: number, cp2y:number, x: number, y: number)
+---@field oval fun(graphicsContext: GraphicsContext, rectangle: Rectangle)
+---@field rect fun(graphicsContext: GraphicsContext, rectangle: Rectangle)
+---@field roundedRect fun(graphicsContext: GraphicsContext, rectangle: Rectangle, r: number) | fun(graphicsContext: GraphicsContext, rectangle: Rectangle, rx: number, ry: number)
+---@field stroke fun(graphicsContext: GraphicsContext)
+---@field fill fun(graphicsContext: GraphicsContext)
 GraphicsContext = {}
 
 ---@class (exact) Image https://www.aseprite.org/api/image
