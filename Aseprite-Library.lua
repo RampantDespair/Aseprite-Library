@@ -418,21 +418,21 @@ GraphicsContext = {}
 ---@field bytes string
 ---@field rowStride number
 ---@field bytesPerPixel number
----@field clear function
----@field drawPixel function
----@field getPixel function
----@field drawImage function
----@field drawSprite function
----@field isEqual function
----@field isEmpty function
----@field isPlain function
----@field pixels function
----@field putPixel function
----@field putImage function
----@field putSprite function
----@field saveAs function
----@field resize function
----@field shrinkBounds function
+---@field clear function -- ?
+---@field drawPixel fun(image: Image, x: number, y: number, color: Color)
+---@field getPixel fun(image: Image, x: number, y: number): app.pixelColor
+---@field drawImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
+---@field drawSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
+---@field isEqual fun(imageA: Image, imageB: Image): boolean
+---@field isEmpty fun(image: Image): boolean
+---@field isPlain fun(image: Image, color: Color): boolean
+---@field pixels fun(image: Image) | fun(image: Image, rectangle: Rectangle): app.pixelColor[]
+---@field putPixel fun(image: Image, x: number, y: number, color: Color)
+---@field putImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
+---@field putSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
+---@field saveAs fun(image: Image, filename: string) | fun(image: Image, table: { filename: string, palette: Palette })
+---@field resize fun(image: Image, width: number, height: number) | fun(image: Image, table: { width: number, height: number, method?: "bilinear" | "rotsprite", pivot?: Point } | { size: Size, method?: "bilinear" | "rotsprite", pivot?: Point })
+---@field shrinkBounds fun(image: Image) | fun(image: Image, refColor: Color): Rectangle
 Image = {}
 
     ---@return Image
