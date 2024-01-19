@@ -287,7 +287,12 @@ WebSocketMessageType = {
 ---@field pattern BrushPattern
 ---@field patternOrigin Point
 Brush = {}
--- TODO CONSTRUCTOR
+
+    ---@return Brush
+    ---@overload fun(size: Size): Brush
+    ---@overload fun(image: Image): Brush
+    ---@overload fun(table: { type: BrushType, size: number, angle: number, image: Image, center: Point, pattern: BrushPattern, patternOrigin: Point }): Brush
+    function Brush() end
 
 ---@class (exact) Cel https://www.aseprite.org/api/cel
 ---@field sprite Sprite
