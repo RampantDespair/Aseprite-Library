@@ -69,25 +69,25 @@ preferences = {}
 
 ---@class (exact) fs https://www.aseprite.org/api/app_fs
 ---@field pathSeparator string
----@field filePath function
----@field fileName function
----@field fileExtension function
----@field fileTitle function
----@field filePathAndTitle function
----@field normalizePath function
----@field joinPath function
+---@field filePath fun(fn: string): string
+---@field fileName fun(fn: string): string
+---@field fileExtension fun(fn: string): string
+---@field fileTitle fun(fn: string): string
+---@field filePathAndTitle fun(fn: string): string
+---@field normalizePath fun(fp: string): string
+---@field joinPath fun(path1: string, path2: string): string
 ---@field currentPath string
 ---@field appPath string
 ---@field tempPath string
 ---@field userDocsPath string
 ---@field userConfigPath string
----@field isFile function
----@field isDirectory function
----@field fileSize function
----@field listFiles function
----@field makeDirectory function
----@field makeAllDirectories function
----@field removeDirectory function
+---@field isFile fun(fn: string): boolean
+---@field isDirectory fun(fn: string): boolean
+---@field fileSize fun(fn: string): number
+---@field listFiles fun(fn: string): string[]
+---@field makeDirectory fun(path: string): boolean
+---@field makeAllDirectories fun(path: string): boolean
+---@field removeDirectory fun(path: string): boolean
 fs = {}
 
 ---@class (exact) theme https://www.aseprite.org/api/app_theme
