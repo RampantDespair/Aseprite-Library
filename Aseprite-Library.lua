@@ -661,7 +661,63 @@ Size = {}
 Slice = {}
 
 ---@class (exact) Sprite https://www.aseprite.org/api/sprite
--- TODO
+---@field width number
+---@field height number
+---@field bounds Rectangle
+---@field gridBounds Rectangle
+---@field pixelRatio Size
+---@field selection Selection
+---@field filename string
+---@field isModified boolean
+---@field colorMode ColorMode
+---@field spec ImageSpec
+---@field frames Frame[]
+---@field palettes Palette[]
+---@field layers Layer[]
+---@field cels Cel[]
+---@field tags Tag[]
+---@field slices Slice[]
+---@field backgroundLayer Layer | nil
+---@field transparentColor integer
+---@field color Color
+---@field data string
+---@field properties Properties
+---@field resize fun(sprite: Sprite, width: number, height: number) | fun(sprite: Sprite, size: Size)
+---@field crop fun(sprite: Sprite, x: number, y:number, width: number, height: number) | fun(sprite: Sprite, rectangle: Rectangle)
+---@field saveAs fun(sprite: Sprite, fileName: string)
+---@field saveCopyAs fun(sprite: Sprite, fileName: string)
+---@field close fun(sprite: Sprite)
+---@field loadPalette fun(sprite: Sprite, fileName: string)
+---@field setPalette fun(sprite: Sprite, palette: Palette)
+---@field assignColorSpace fun(sprite: Sprite, colorSpace: ColorSpace)
+---@field convertColorSpace fun(sprite: Sprite, colorSpace: ColorSpace)
+---@field newLayer fun(sprite: Sprite): Layer
+---@field newGroup fun(sprite: Sprite): Layer
+---@field deleteLayer fun(sprite: Sprite, layer: Layer) | fun(sprite: Sprite, layerName: string)
+---@field newFrame fun(sprite: Sprite, frame: Frame): Frame | fun(sprite: Sprite, frameNumber: number): Frame
+---@field newEmptyFrame fun(sprite: Sprite, frameNumber: number): Frame
+---@field deleteFrame fun(sprite: Sprite, frame: Frame)
+---@field newCel fun(sprite: Sprite, layer: Layer, frame: Frame, image?: Image, position?: Point): Cel
+---@field newTag fun(sprite: Sprite, fromFrameNumber: number, toFrameNumber: number): Tag
+---@field deleteTag fun(sprite: Sprite, tag: Tag) | fun(sprite: Sprite, tagName: string)
+---@field newSlice fun(sprite: Sprite) | fun(sprite: Sprite, rectangle: Rectangle): Slice
+---@field deleteSlice fun(sprite: Sprite, slice: Slice) | fun(sprite: Sprite, sliceName: string)
+---@field newTileset fun(sprite: Sprite): Tileset | fun(sprite: Sprite, grid: any): Tileset | fun(sprite: Sprite, rectangle: Rectangle): Tileset | fun(sprite: Sprite, grid: any, numTiles: number): Tileset | fun(sprite: Sprite, rectangle: Rectangle, numTiles: number): Tileset | fun(sprite: Sprite, anotherTileset: Tileset): Tileset
+---@field deleteTileset fun(sprite: Sprite, tileset: Tileset) | fun(sprite: Sprite, tilesetIndex: number)
+---@field newTile fun(sprite: Sprite, tileset: Tileset, tileIndex?: number): Tile
+---@field deleteTile fun(sprite: Sprite, tile: Tile) | fun(sprite: Sprite, tileset: Tileset, tileIndex: number)
+---@field flatten fun(sprite: Sprite)
+---@field events Events
+---@field tileManagementPlugin any
+Sprite = {}
+
+    ---@return Sprite
+    ---@overload fun(width: number, height: number): Sprite
+    ---@overload fun(width: number, height: number, colorMode: ColorMode): Sprite
+    ---@overload fun(spec: ImageSpec): Sprite
+    ---@overload fun(otherSprite: Sprite): Sprite
+    ---@overload fun(table: { fromFile: string, oneFrame?: any }): Sprite
+    function Sprite() end
 
 ---@class (exact) Tag https://www.aseprite.org/api/tag
 ---@field sprite Sprite
