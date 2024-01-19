@@ -434,7 +434,15 @@ GraphicsContext = {}
 ---@field resize function
 ---@field shrinkBounds function
 Image = {}
--- TODO CONSTRUCTOR
+
+    ---@return Image
+    ---@overload fun(width: number, height: number, colorMode?: ColorMode): Image
+    ---@overload fun(spec: ImageSpec): Image
+    ---@overload fun(sprite: Sprite): Image
+    ---@overload fun(otherImage: Image): Image
+    ---@overload fun(otherImage: Image, rectangle: Rectangle): Image
+    ---@overload fun(table: { fromFile: string }): Image
+    function Image() end
 
 ---@class (exact) ImageSpec https://www.aseprite.org/api/imagespec
 ---@field colorMode ColorMode
