@@ -586,7 +586,14 @@ Range = {}
 ---@field intersect fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
 ---@field union fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
 Rectangle = {}
--- TODO CONSTRUCTOR
+
+    ---@return Rectangle
+    ---@overload fun(otherRectangle: Rectangle): Rectangle
+    ---@overload fun(x: number, y: number, width: number, height: number): Rectangle
+    ---@overload fun(table: { x: number, y: number, width: number, height: number }): Rectangle
+    ---@overload fun(table: { x: number, y: number, w: number, h: number }): Rectangle
+    ---@overload fun(array: number[]): Rectangle
+    function Rectangle() end
 
 ---@class (exact) Selection https://www.aseprite.org/api/selection
 ---@field bounds Rectangle
