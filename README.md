@@ -43,6 +43,11 @@ OR (Better)
 
 Using the second method will make you able to pull the repository if/when new things are added/changed on this repository.
 
+<!-- IMPORTANT -->
+## Important
+
+*   Do not import the library file into your actual script (dofile/require), because this library is to be used strictly in development, not in production.
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
