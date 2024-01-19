@@ -37,7 +37,7 @@ From there you have 2 choices:
 
 2.  Download the [library file](https://github.com/RampantDespair/Aseprite-Library/blob/main/Aseprite-Library.lua) and paste it into your project anywhere
 
-OR 
+OR (Better)
 
 2.  Add the [Aseprite-Library](https://github.com/RampantDespair/Aseprite-Library) repository as a submodule to your project by running the following command `git submodule add https://github.com/RampantDespair/Aseprite-Library lib/Aseprite-Library`
 
