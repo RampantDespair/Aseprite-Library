@@ -49,3 +49,9 @@ Using the second method will make you able to pull the repository if/when new th
 If you have a suggestion that would make this better, please fork the repo and create a pull request.
 You can also simply open an issue with the tag "enhancement".
 Any contributions you make are **greatly appreciated**.
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+*   [Aseprite API](https://www.aseprite.org/api)
+*   [Lua Language Server](https://luals.github.io/)
