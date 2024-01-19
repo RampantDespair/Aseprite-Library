@@ -443,7 +443,11 @@ Image = {}
 ---@field colorSpace ColorSpace
 ---@field transparentColor number
 ImageSpec = {}
--- TODO CONSTRUCTOR
+
+    ---@return ImageSpec
+    ---@overload fun(otherImageSpec: ImageSpec): ImageSpec
+    ---@overload fun(table: { width: number, height: number, colorMode: number, transparentColor: number }): ImageSpec
+    function ImageSpec() end
 
 ---@class (exact) KeyEvent https://www.aseprite.org/api/keyevent
 ---@field repeatCount number
