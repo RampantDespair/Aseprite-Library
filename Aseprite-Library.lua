@@ -93,7 +93,7 @@ fs = {}
 ---@class (exact) theme https://www.aseprite.org/api/app_theme
 ---@field color Color
 ---@field dimension number
----@field styleMetrics function
+---@field styleMetrics fun(theme: theme, style_id: string): any
 theme = {}
 
 ---@class (exact) json https://www.aseprite.org/api/json
