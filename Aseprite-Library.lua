@@ -505,7 +505,13 @@ MouseEvent = {}
 ---@field frame Frame
 ---@field saveAs fun(palette: Palette, filename: string)
 Palette = {}
--- TODO CONSTRUCTOR
+
+    ---@return Palette
+    ---@overload fun(numberOfColors: number): Palette
+    ---@overload fun(otherPalette: Palette): Palette
+    ---@overload fun(table: { fromFile: string }): Palette
+    ---@overload fun(table: { fromResource: any }): Palette
+    function Palette() end
 
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@field name string
