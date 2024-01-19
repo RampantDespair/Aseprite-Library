@@ -544,7 +544,13 @@ Plugin = {}
 ---@field x number
 ---@field y number
 Point = {}
--- TODO CONSTRUCTOR
+
+    ---@return Point
+    ---@overload fun(otherPoint: Point): Point
+    ---@overload fun(x: number, y: number): Point
+    ---@overload fun(table: { x: number, y: number }): Point
+    ---@overload fun(array: number[]): Point
+    function Point() end
 
 ---@class (exact) Properties https://www.aseprite.org/api/properties
 Properties = {}
