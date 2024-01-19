@@ -480,7 +480,7 @@ KeyEvent = {}
 ---@field color Color
 ---@field data string
 ---@field properties Properties
----@field cel fun(layer: Layer, frameNumber: number)
+---@field cel fun(layer: Layer, frameNumber: number): Cel | nil
 ---@field tileset Tileset
 Layer = {}
 
