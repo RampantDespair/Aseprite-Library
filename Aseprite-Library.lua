@@ -552,6 +552,18 @@ Range = {}
 Rectangle = {}
 
 ---@class (exact) Selection https://www.aseprite.org/api/selection
+-- TODO Construct
+---@field bounds Rectangle
+---@field origin Point
+---@field isEmpty boolean
+---@field deselect fun(selection: Selection)
+---@field select fun(selection: Selection, rectangle: Rectangle)
+---@field selectAll fun(selection: Selection)
+---@field add fun(selection: Selection, other: Rectangle | Selection)
+---@field subtract fun(selection: Selection, other: Rectangle | Selection)
+---@field intersect fun(selection: Selection, other: Rectangle | Selection)
+---@field contains fun(point: Point) | fun(x: number, y: number): boolean
+Selection = {}
 
 ---@class (exact) Site https://www.aseprite.org/api/site
 ---@field sprite Sprite
