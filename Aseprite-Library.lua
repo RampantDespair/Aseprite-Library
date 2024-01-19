@@ -351,7 +351,34 @@ ColorSpace = {}
     function ColorSpace() end
 
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
--- TODO
+---@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: function })
+---@field check fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: function })
+---@field close fun(dialog: Dialog)
+---@field color fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, color: app.Color, onchange: function })
+---@field combobox fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, option: string, options: string[], onchange: function })
+---@field data boolean | string | integer | Color | Color[]
+---@field bounds Rectangle
+---@field entry fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, focus: boolean, onchange: function })
+---@field label fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string })
+---@field modify fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, visible: boolean, enabled: boolean, text: string })
+---@field newrow fun(dialog: Dialog) | fun(dialog: Dialog, table: { always: boolean })
+---@field number fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, decimals: integer, onchange: function })
+---@field radio fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: function })
+---@field separator fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string })
+---@field shades fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, mode: "pick" | "sort", colors: Color[], onclick: function })
+---@field show fun(dialog: Dialog) | fun(dialog: Dialog, table: { wait: boolean, bounds: Rectangle, autoscrollbars: boolean })
+---@field slider fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, min: integer, max: integer, value: integer, onchange: function, onrelease: function })
+---@field tab fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string, onclick: function })
+---@field endtabs fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, selected: string, align: integer, onchange: function })
+---@field file fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, title: string, open: boolean, save: boolean, filename: string | string[], filetypes: string[], onchange: function })
+---@field canvas fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, width: integer, height: integer, autoscaling: boolean, onpaint: fun(ev: any), onkeydown: fun(ev: any), onkeyup: fun(ev: any), onmousemove: fun(ev: any), onmousedown: fun(ev: any), onmouseup: fun(ev: any), ondblclick: fun(ev: any), onwheel: fun(ev: any), ontouchmagnify: fun(ev: any) })
+---@field repaint fun(dialog: Dialog)
+Dialog = {}
+
+    ---@return Dialog
+    ---@overload fun(title: string): Dialog
+    ---@overload fun(table: { title: string, notitlebar: boolean, parent: Dialog, onclose: function }): Dialog
+    function Dialog() end
 
 ---@class (exact) Editor https://www.aseprite.org/api/editor
 ---@field sprite Sprite
