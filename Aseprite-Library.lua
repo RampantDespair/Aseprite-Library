@@ -609,13 +609,13 @@ GraphicsContext = {}
 ---@field isEqual fun(imageA: Image, imageB: Image): boolean
 ---@field isEmpty fun(image: Image): boolean
 ---@field isPlain fun(image: Image, color: Color): boolean
----@field pixels fun(image: Image): app.pixelColor[] | fun(image: Image, rectangle: Rectangle): app.pixelColor[]
+---@field pixels (fun(image: Image): app.pixelColor[]) | (fun(image: Image, rectangle: Rectangle): app.pixelColor[])
 ---@field putPixel fun(image: Image, x: number, y: number, color: Color)
 ---@field putImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
 ---@field putSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
 ---@field saveAs fun(image: Image, filename: string) | fun(image: Image, table: { filename: string, palette: Palette })
 ---@field resize fun(image: Image, width: number, height: number) | fun(image: Image, table: { width: number, height: number, method?: "bilinear" | "rotsprite", pivot?: Point } | { size: Size, method?: "bilinear" | "rotsprite", pivot?: Point })
----@field shrinkBounds fun(image: Image): Rectangle | fun(image: Image, refColor: Color): Rectangle
+---@field shrinkBounds (fun(image: Image): Rectangle) | (fun(image: Image, refColor: Color): Rectangle)
 Image = {}
 
     ---@return Image
@@ -877,7 +877,7 @@ Slice = {}
 ---@field newLayer fun(sprite: Sprite): Layer
 ---@field newGroup fun(sprite: Sprite): Layer
 ---@field deleteLayer fun(sprite: Sprite, layer: Layer) | fun(sprite: Sprite, layerName: string)
----@field newFrame fun(sprite: Sprite, frame: Frame): Frame | fun(sprite: Sprite, frameNumber: number): Frame
+---@field newFrame (fun(sprite: Sprite, frame: Frame): Frame) | (fun(sprite: Sprite, frameNumber: number): Frame)
 ---@field newEmptyFrame fun(sprite: Sprite, frameNumber: number): Frame
 ---@field deleteFrame fun(sprite: Sprite, frame: Frame)
 ---@field newCel fun(sprite: Sprite, layer: Layer, frame: Frame, image?: Image, position?: Point): Cel
@@ -885,7 +885,7 @@ Slice = {}
 ---@field deleteTag fun(sprite: Sprite, tag: Tag) | fun(sprite: Sprite, tagName: string)
 ---@field newSlice fun(sprite: Sprite) | fun(sprite: Sprite, rectangle: Rectangle): Slice
 ---@field deleteSlice fun(sprite: Sprite, slice: Slice) | fun(sprite: Sprite, sliceName: string)
----@field newTileset fun(sprite: Sprite): Tileset | fun(sprite: Sprite, grid: any): Tileset | fun(sprite: Sprite, rectangle: Rectangle): Tileset | fun(sprite: Sprite, grid: any, numTiles: number): Tileset | fun(sprite: Sprite, rectangle: Rectangle, numTiles: number): Tileset | fun(sprite: Sprite, anotherTileset: Tileset): Tileset
+---@field newTileset (fun(sprite: Sprite): Tileset) | (fun(sprite: Sprite, grid: any): Tileset) | (fun(sprite: Sprite, rectangle: Rectangle): Tileset) | (fun(sprite: Sprite, grid: any, numTiles: number): Tileset) | (fun(sprite: Sprite, rectangle: Rectangle, numTiles: number): Tileset) | (fun(sprite: Sprite, anotherTileset: Tileset): Tileset)
 ---@field deleteTileset fun(sprite: Sprite, tileset: Tileset) | fun(sprite: Sprite, tilesetIndex: number)
 ---@field newTile fun(sprite: Sprite, tileset: Tileset, tileIndex?: number): Tile
 ---@field deleteTile fun(sprite: Sprite, tile: Tile) | fun(sprite: Sprite, tileset: Tileset, tileIndex: number)
