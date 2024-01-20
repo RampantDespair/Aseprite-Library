@@ -55,7 +55,7 @@ OR (Better, because using this method will make you able to stay synced to this 
 <!-- EXAMPLE -->
 ## Example
 
-If you want to see a real usage example, you can go check out my [Aseprite-Import-Export-Extension](https://github.com/RampantDespair/Aseprite-Import-Export-Extension/edit/main/README.md).
+If you want to see a real usage example, you can go check out my [Aseprite-Import-Export-Extension](https://github.com/RampantDespair/Aseprite-Import-Export-Extension).
 
 <!-- IMPORTANT -->
 ## Important
