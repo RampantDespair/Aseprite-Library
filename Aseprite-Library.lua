@@ -97,7 +97,7 @@ pixelColor = {}
 ---@field DuplicateSprite fun()
 ---@field DuplicateView fun()
 ---@field Exit fun()
----@field ExportSpriteSheet fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/ExportTileset TODO
+---@field ExportSpriteSheet fun(table: { ui: boolean, askOverwrite: boolean, type: SpriteSheetType, columns: number, rows: number, width: number, height: number, bestFit: boolean, textureFilename: string, dataFilename: string, dataFormat: SpriteSheetDataFormat, filenameFormat: string, borderPadding: number, shapePadding: number, innerPadding: number, trimSprite: boolean, trim: boolean, trimByGrid: boolean, extrude: boolean, ignoreEmpty: boolean, mergeDuplicates: boolean, openGenerated: boolean, layer: string, tag: string, splitLayers: boolean, splitTags: boolean, splitGrid: boolean, listLayers: boolean, listTags: boolean, listSlices: boolean, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportTileset
 ---@field ExportTileset fun(table: { dataFormat: SpriteSheetDataFormat, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportTileset
 ---@field Eyedropper fun()
 ---@field Fill fun()
@@ -122,15 +122,15 @@ pixelColor = {}
 ---@field GotoPreviousTab fun()
 ---@field GridSettings fun()
 ---@field Home fun()
----@field HueSaturation fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/HueSaturation TODO
----@field ImportSpriteSheet fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/ImportSpriteSheet TODO
----@field InvertColor fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/InvertColor TODO
+---@field HueSaturation fun(table: { ui: boolean, channels: FilterChannels, mode: "hsl" | "hsv", hue: number, saturation: number, lightness: number, alpha: number }) https://www.aseprite.org/api/command/HueSaturation
+---@field ImportSpriteSheet fun(table: { ui: boolean, type: SpriteSheetType, frameBounds: Rectangle, padding: Size, partialTiles: boolean }) https://www.aseprite.org/api/command/ImportSpriteSheet
+---@field InvertColor fun(table: { ui: boolean, channels: FilterChannels }) https://www.aseprite.org/api/command/InvertColor
 ---@field InvertMask fun()
 ---@field KeyboardShortcuts fun()
 ---@field Launch fun()
 ---@field LayerFromBackground fun()
 ---@field LayerLock fun()
----@field LayerOpacity fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/LayerOpacity TODO
+---@field LayerOpacity fun(table: { opacity: number }) https://www.aseprite.org/api/command/LayerOpacity
 ---@field LayerProperties fun()
 ---@field LayerVisibility fun()
 ---@field LinkCels fun()
@@ -142,13 +142,13 @@ pixelColor = {}
 ---@field MergeDownLayer fun()
 ---@field ModifySelection fun()
 ---@field MoveCel fun()
----@field MoveColors fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/MoveColors TODO
----@field MoveMask fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/MoveMask TODO
+---@field MoveColors fun(table: { before: number }) https://www.aseprite.org/api/command/MoveColors
+---@field MoveMask fun(table: { target: "boundaries" | "content", wrap: boolean, direction: "left" | "right" | "up" | "down", units: "pixel" | "tile-width" | "tile-height" | "zoomed-pixel" | "zoomed-tile-width" | "zoomed-tile-height" | "viewport-width" | "viewport-height", quantity: number }) https://www.aseprite.org/api/command/MoveMask
 ---@field NewBrush fun()
----@field NewFile fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/NewFile TODO
+---@field NewFile fun(table: { ui: boolean, width: number, height: number, colorMode: ColorMode, fromClipboard: boolean }) https://www.aseprite.org/api/command/NewFile
 ---@field NewFrameTag fun()
 ---@field NewFrame fun()
----@field NewLayer fun(table: { ui: boolean, }) https://www.aseprite.org/api/command/NewLayer TODO
+---@field NewLayer fun(table: { name: string, group: boolean, reference: boolean, tilemap: boolean, gridBounds: Rectangle, ask: boolean, fromFile: boolean, fromClipboard: boolean, viaCut: boolean, viaCopy: boolean, top: boolean, before: boolean }) https://www.aseprite.org/api/command/NewLayer
 ---@field NewSpriteFromSelection fun()
 ---@field OpenBrowser fun()
 ---@field OpenFile fun()
