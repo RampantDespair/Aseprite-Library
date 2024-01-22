@@ -880,7 +880,7 @@ Slice = {}
 ---@field newFrame (fun(sprite: Sprite, frame: Frame): Frame) | (fun(sprite: Sprite, frameNumber: number): Frame)
 ---@field newEmptyFrame fun(sprite: Sprite, frameNumber: number): Frame
 ---@field deleteFrame fun(sprite: Sprite, frame: Frame)
----@field newCel fun(sprite: Sprite, layer: Layer, frame: Frame, image?: Image, position?: Point): Cel
+---@field newCel (fun(sprite: Sprite, layer: Layer, frame: Frame, image?: Image, position?: Point): Cel) | (fun(sprite: Sprite, layer: Layer, frameNumber: number, image?: Image, position?: Point): Cel)
 ---@field newTag fun(sprite: Sprite, fromFrameNumber: number, toFrameNumber: number): Tag
 ---@field deleteTag fun(sprite: Sprite, tag: Tag) | fun(sprite: Sprite, tagName: string)
 ---@field newSlice fun(sprite: Sprite) | fun(sprite: Sprite, rectangle: Rectangle): Slice
