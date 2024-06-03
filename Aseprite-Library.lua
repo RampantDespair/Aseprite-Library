@@ -623,7 +623,7 @@ Image = {}
     ---@overload fun(spec: ImageSpec): Image
     ---@overload fun(sprite: Sprite): Image
     ---@overload fun(otherImage: Image): Image
-    ---@overload fun(otherImage: Image, rectangle: Rectangle): Image
+    ---@overload fun(otherImage: Image, rectangle: Rectangle): Image | nil
     ---@overload fun(table: { fromFile: string }): Image
     function Image() end
 
