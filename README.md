@@ -23,15 +23,21 @@
 <hr>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 This project was made to remove the hassle of having to constantly look for functions on the [api page](https://www.aseprite.org/api).
 <br>
 With that in mind, this lua library lets view functions and fields on your project itself.
-<br>
-Reddit thread: [[Release] Two Aseprite Projects: Script Development Library & Feature-Rich Extension ](https://www.reddit.com/r/aseprite/comments/1i94hds/release_two_aseprite_projects_script_development/)
+
+<!-- SOCIALS -->
+
+## Socials
+
+Reddit thread: [[Release] Two Aseprite Projects: Script Development Library & Feature-Rich Extension](https://www.reddit.com/r/aseprite/comments/1i94hds/release_two_aseprite_projects_script_development/)
 
 <!-- INSTALLATION -->
+
 ## Installation
 
 1.  Download the [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension on the VSCode Marketplace
@@ -45,26 +51,29 @@ OR (Better, because using this method will make you able to stay synced to this 
 2.  Add the [Aseprite-Library](https://github.com/RampantDespair/Aseprite-Library) repository as a submodule to your project by running the following command `git submodule add https://github.com/RampantDespair/Aseprite-Library lib/Aseprite-Library`
 
 3.  Add the following to your `.vscode\settings.json` file (if it doesn't exist, just create it)
+
 ```json
 {
-    "Lua.workspace.library": [
-        "lib\\Aseprite-Library\\Aseprite-Library.lua"
-    ]
+  "Lua.workspace.library": ["lib\\Aseprite-Library\\Aseprite-Library.lua"]
 }
 ```
+
 4.  Start writing your script :)
 
 <!-- EXAMPLE -->
+
 ## Example
 
 If you want to see a real usage example, you can go check out my [Aseprite-Extension](https://github.com/RampantDespair/Aseprite-Extension).
 
 <!-- IMPORTANT -->
+
 ## Important
 
 Do not import the library file into your actual script (dofile/require), because this library is to be used strictly in development, not in production.
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request.
@@ -74,7 +83,8 @@ You can also simply open an issue with the tag "enhancement".
 Any contributions you make are **greatly appreciated**.
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-*   [Aseprite API](https://www.aseprite.org/api)
-*   [Lua Language Server](https://luals.github.io/)
+- [Aseprite API](https://www.aseprite.org/api)
+- [Lua Language Server](https://luals.github.io/)
