@@ -28,6 +28,8 @@
 This project was made to remove the hassle of having to constantly look for functions on the [api page](https://www.aseprite.org/api).
 <br>
 With that in mind, this lua library lets view functions and fields on your project itself.
+<br>
+Reddit thread: [[Release] Two Aseprite Projects: Script Development Library & Feature-Rich Extension ](https://www.reddit.com/r/aseprite/comments/1i94hds/release_two_aseprite_projects_script_development/)
 
 <!-- INSTALLATION -->
 ## Installation
