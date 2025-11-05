@@ -156,7 +156,7 @@ pixelColor = {}
 ---@field NewBrush fun()
 ---@field NewFile fun(table: { ui: boolean, width: number, height: number, colorMode: ColorMode, fromClipboard: boolean }) https://www.aseprite.org/api/command/NewFile
 ---@field NewFrameTag fun()
----@field NewFrame fun()
+---@field NewFrame fun(table?: {content: "current" | "empty" | "cel" | "celcopies" | "cellinked"})
 ---@field NewLayer fun(table?: { name: string, group: boolean, reference: boolean, tilemap: boolean, gridBounds: Rectangle, ask: boolean, fromFile: boolean, fromClipboard: boolean, viaCut: boolean, viaCopy: boolean, top: boolean, before: boolean }) https://www.aseprite.org/api/command/NewLayer
 ---@field NewSpriteFromSelection fun()
 ---@field OpenBrowser fun()
@@ -221,6 +221,7 @@ pixelColor = {}
 ---@field Timeline fun()
 ---@field TogglePreview fun()
 ---@field ToggleTimelineThumbnails fun()
+---@field ToggleWorkspaceLayout fun()
 ---@field UndoHistory fun()
 ---@field Undo fun()
 ---@field UnlinkCel fun()
@@ -556,6 +557,8 @@ Dialog = {}
 ---@field sprite Sprite
 ---@field spritePos Point
 ---@field mousePos Point
+---@field zoom number
+---@field scroll Point
 ---@field askPoint fun(editor: Editor, table: { title: string, point: Point, onclick: fun(), onchange: fun(), oncancel: fun() })
 ---@field cancel fun(editor: Editor)
 Editor = {}
