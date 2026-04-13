@@ -106,7 +106,7 @@ pixelColor = {}
 ---@field DuplicateSprite fun()
 ---@field DuplicateView fun()
 ---@field Exit fun()
----@field ExportSpriteSheet fun(table: { ui: boolean, askOverwrite: boolean, type: SpriteSheetType, columns: number, rows: number, width: number, height: number, bestFit: boolean, textureFilename: string, dataFilename: string, dataFormat: SpriteSheetDataFormat, filenameFormat: string, borderPadding: number, shapePadding: number, innerPadding: number, trimSprite: boolean, trim: boolean, trimByGrid: boolean, extrude: boolean, ignoreEmpty: boolean, mergeDuplicates: boolean, openGenerated: boolean, layer: string, tag: string, splitLayers: boolean, splitTags: boolean, splitGrid: boolean, listLayers: boolean, listTags: boolean, listSlices: boolean, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportTileset
+---@field ExportSpriteSheet fun(table: { ui: boolean, askOverwrite: boolean, type: SpriteSheetType, columns: number, rows: number, width: number, height: number, bestFit: boolean, textureFilename: string, dataFilename: string, dataFormat: SpriteSheetDataFormat, filenameFormat: string, borderPadding: number, shapePadding: number, innerPadding: number, trimSprite: boolean, trim: boolean, trimByGrid: boolean, extrude: boolean, ignoreEmpty: boolean, mergeDuplicates: boolean, openGenerated: boolean, layer: string, tag: string, splitLayers: boolean, splitTags: boolean, splitGrid: boolean, listLayers: boolean, listTags: boolean, listSlices: boolean, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportSpriteSheet
 ---@field ExportTileset fun(table: { dataFormat: SpriteSheetDataFormat, fromTilesets: boolean }) https://www.aseprite.org/api/command/ExportTileset
 ---@field Eyedropper fun()
 ---@field Fill fun()
@@ -453,7 +453,7 @@ WebSocketMessageType = {
 
 ---@class (exact) Brush https://www.aseprite.org/api/brush
 ---@field type BrushType
----@field size number 
+---@field size number
 ---@field angle number
 ---@field image Image
 ---@field center Point
@@ -461,11 +461,11 @@ WebSocketMessageType = {
 ---@field patternOrigin Point
 Brush = {}
 
-    ---@return Brush
-    ---@overload fun(size: Size): Brush
-    ---@overload fun(image: Image): Brush
-    ---@overload fun(table: { type: BrushType, size: number, angle: number, image: Image, center: Point, pattern: BrushPattern, patternOrigin: Point }): Brush
-    function Brush() end
+---@return Brush
+---@overload fun(size: Size): Brush
+---@overload fun(image: Image): Brush
+---@overload fun(table: { type: BrushType, size: number, angle: number, image: Image, center: Point, pattern: BrushPattern, patternOrigin: Point }): Brush
+function Brush() end
 
 ---@class (exact) Cel https://www.aseprite.org/api/cel
 ---@field sprite Sprite
@@ -503,25 +503,25 @@ Cel = {}
 ---@field grayPixel pixelColor
 Color = {}
 
-    ---@return Color
-    ---@overload fun(index: integer): Color
-    ---@overload fun(table: { r: number, g: number, b: number, a: number }): Color
-    ---@overload fun(table: { h: number, s: number, v: number, a: Image }): Color
-    ---@overload fun(table: { h: number, s: number, l: number, a: Image }): Color
-    ---@overload fun(table: { red: number, green: number, blue: number, alpha: number}): Color
-    ---@overload fun(table: { hue: number, saturation: number, value: number, alpha: number }): Color
-    ---@overload fun(table: { hue: number, saturation: number, lightness: number, alpha: number }): Color
-    ---@overload fun(table: { index: number }): Color
-    function Color() end
+---@return Color
+---@overload fun(index: integer): Color
+---@overload fun(table: { r: number, g: number, b: number, a: number }): Color
+---@overload fun(table: { h: number, s: number, v: number, a: Image }): Color
+---@overload fun(table: { h: number, s: number, l: number, a: Image }): Color
+---@overload fun(table: { red: number, green: number, blue: number, alpha: number}): Color
+---@overload fun(table: { hue: number, saturation: number, value: number, alpha: number }): Color
+---@overload fun(table: { hue: number, saturation: number, lightness: number, alpha: number }): Color
+---@overload fun(table: { index: number }): Color
+function Color() end
 
 ---@class (exact) ColorSpace https://www.aseprite.org/api/colorspace
 ---@field name string
 ColorSpace = {}
 
-    ---@return ColorSpace
-    ---@overload fun(table: { sRGB: boolean }): ColorSpace
-    ---@overload fun(table: { fromFile: string }): ColorSpace
-    function ColorSpace() end
+---@return ColorSpace
+---@overload fun(table: { sRGB: boolean }): ColorSpace
+---@overload fun(table: { fromFile: string }): ColorSpace
+function ColorSpace() end
 
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
 ---@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: fun() })
@@ -548,10 +548,10 @@ ColorSpace = {}
 ---@field repaint fun(dialog: Dialog)
 Dialog = {}
 
-    ---@return Dialog
-    ---@overload fun(title: string): Dialog
-    ---@overload fun(table: { title: string, notitlebar: boolean, parent: Dialog, onclose: fun() }): Dialog
-    function Dialog() end
+---@return Dialog
+---@overload fun(title: string): Dialog
+---@overload fun(table: { title: string, notitlebar: boolean, parent: Dialog, onclose: fun() }): Dialog
+function Dialog() end
 
 ---@class (exact) Editor https://www.aseprite.org/api/editor
 ---@field sprite Sprite
@@ -638,14 +638,14 @@ GraphicsContext = {}
 ---@field flip fun(image: Image, fliptype?: FlipType)
 Image = {}
 
-    ---@return Image
-    ---@overload fun(width: number, height: number, colorMode?: ColorMode): Image
-    ---@overload fun(spec: ImageSpec): Image
-    ---@overload fun(sprite: Sprite): Image
-    ---@overload fun(otherImage: Image): Image
-    ---@overload fun(otherImage: Image, rectangle: Rectangle): Image | nil
-    ---@overload fun(table: { fromFile: string }): Image
-    function Image() end
+---@return Image
+---@overload fun(width: number, height: number, colorMode?: ColorMode): Image
+---@overload fun(spec: ImageSpec): Image
+---@overload fun(sprite: Sprite): Image
+---@overload fun(otherImage: Image): Image
+---@overload fun(otherImage: Image, rectangle: Rectangle): Image | nil
+---@overload fun(table: { fromFile: string }): Image
+function Image() end
 
 ---@class (exact) ImageSpec https://www.aseprite.org/api/imagespec
 ---@field colorMode ColorMode
@@ -655,10 +655,10 @@ Image = {}
 ---@field transparentColor number
 ImageSpec = {}
 
-    ---@return ImageSpec
-    ---@overload fun(otherImageSpec: ImageSpec): ImageSpec
-    ---@overload fun(table: { width: number, height: number, colorMode: ColorMode, transparentColor: number }): ImageSpec
-    function ImageSpec() end
+---@return ImageSpec
+---@overload fun(otherImageSpec: ImageSpec): ImageSpec
+---@overload fun(table: { width: number, height: number, colorMode: ColorMode, transparentColor: number }): ImageSpec
+function ImageSpec() end
 
 ---@class (exact) KeyEvent https://www.aseprite.org/api/keyevent
 ---@field repeatCount number
@@ -721,12 +721,12 @@ MouseEvent = {}
 ---@field saveAs fun(palette: Palette, filename: string)
 Palette = {}
 
-    ---@return Palette
-    ---@overload fun(numberOfColors: number): Palette
-    ---@overload fun(otherPalette: Palette): Palette
-    ---@overload fun(table: { fromFile: string }): Palette
-    ---@overload fun(table: { fromResource: any }): Palette
-    function Palette() end
+---@return Palette
+---@overload fun(numberOfColors: number): Palette
+---@overload fun(otherPalette: Palette): Palette
+---@overload fun(table: { fromFile: string }): Palette
+---@overload fun(table: { fromResource: any }): Palette
+function Palette() end
 
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@field name string
@@ -737,35 +737,35 @@ Palette = {}
 ---@field newMenuSeparator fun(plugin: Plugin, args: newMenuSeparatorTable)
 Plugin = {}
 
-    ---@class (exact) newCommandTable
-    ---@field id string
-    ---@field title string
-    ---@field group string
-    ---@field onclick fun()
-    ---@field onenabled fun(): boolean
-    newCommandTable = {}
+---@class (exact) newCommandTable
+---@field id string
+---@field title string
+---@field group string
+---@field onclick fun()
+---@field onenabled fun(): boolean
+newCommandTable = {}
 
-    ---@class (exact) newMenuGroupTable
-    ---@field id string
-    ---@field title string
-    ---@field group string
-    newMenuGroupTable = {}
+---@class (exact) newMenuGroupTable
+---@field id string
+---@field title string
+---@field group string
+newMenuGroupTable = {}
 
-    ---@class (exact) newMenuSeparatorTable
-    ---@field group string
-    newMenuSeparatorTable = {}
+---@class (exact) newMenuSeparatorTable
+---@field group string
+newMenuSeparatorTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
 ---@field y number
 Point = {}
 
-    ---@return Point
-    ---@overload fun(otherPoint: Point): Point
-    ---@overload fun(x: number, y: number): Point
-    ---@overload fun(table: { x: number, y: number }): Point
-    ---@overload fun(array: number[]): Point
-    function Point() end
+---@return Point
+---@overload fun(otherPoint: Point): Point
+---@overload fun(x: number, y: number): Point
+---@overload fun(table: { x: number, y: number }): Point
+---@overload fun(array: number[]): Point
+function Point() end
 
 ---@class (exact) Properties https://www.aseprite.org/api/properties
 Properties = {}
@@ -802,14 +802,14 @@ Range = {}
 ---@field union fun(rectangle: Rectangle, otherRectangle: Rectangle): Rectangle
 Rectangle = {}
 
-    ---@return Rectangle
-    ---@overload fun(otherRectangle: Rectangle): Rectangle
-    ---@overload fun(x: number, y: number, width: number, height: number): Rectangle
-    ---@overload fun(point: Point | Size, size: Point | Size): Rectangle
-    ---@overload fun(table: { x: number, y: number, width: number, height: number }): Rectangle
-    ---@overload fun(table: { x: number, y: number, w: number, h: number }): Rectangle
-    ---@overload fun(array: number[]): Rectangle
-    function Rectangle() end
+---@return Rectangle
+---@overload fun(otherRectangle: Rectangle): Rectangle
+---@overload fun(x: number, y: number, width: number, height: number): Rectangle
+---@overload fun(point: Point | Size, size: Point | Size): Rectangle
+---@overload fun(table: { x: number, y: number, width: number, height: number }): Rectangle
+---@overload fun(table: { x: number, y: number, w: number, h: number }): Rectangle
+---@overload fun(array: number[]): Rectangle
+function Rectangle() end
 
 ---@class (exact) Selection https://www.aseprite.org/api/selection
 ---@field bounds Rectangle
@@ -824,9 +824,9 @@ Rectangle = {}
 ---@field contains fun(selection: Selection, point: Point) | fun(selection: Selection, x: number, y: number): boolean
 Selection = {}
 
-    ---@return Selection
-    ---@overload fun(rectangle: Rectangle): Selection
-    function Selection() end
+---@return Selection
+---@overload fun(rectangle: Rectangle): Selection
+function Selection() end
 
 ---@class (exact) Site https://www.aseprite.org/api/site
 ---@field sprite Sprite
@@ -845,13 +845,13 @@ Site = {}
 ---@field union fun(otherSize: Size): Size
 Size = {}
 
-    ---@return Size
-    ---@overload fun(otherSize: Size): Size
-    ---@overload fun(width: number, height: number): Size
-    ---@overload fun(table: { width: number, height: number }): Size
-    ---@overload fun(table: { w: number, h: number }): Size
-    ---@overload fun(array: number[]): Size
-    function Size() end
+---@return Size
+---@overload fun(otherSize: Size): Size
+---@overload fun(width: number, height: number): Size
+---@overload fun(table: { width: number, height: number }): Size
+---@overload fun(table: { w: number, h: number }): Size
+---@overload fun(array: number[]): Size
+function Size() end
 
 ---@class (exact) Slice https://www.aseprite.org/api/slice
 ---@field bounds Rectangle
@@ -915,13 +915,13 @@ Slice = {}
 ---@field tileManagementPlugin any
 Sprite = {}
 
-    ---@return Sprite
-    ---@overload fun(width: number, height: number): Sprite
-    ---@overload fun(width: number, height: number, colorMode: ColorMode): Sprite
-    ---@overload fun(spec: ImageSpec): Sprite
-    ---@overload fun(otherSprite: Sprite): Sprite
-    ---@overload fun(table: { fromFile: string, oneFrame?: any }): Sprite
-    function Sprite() end
+---@return Sprite
+---@overload fun(width: number, height: number): Sprite
+---@overload fun(width: number, height: number, colorMode: ColorMode): Sprite
+---@overload fun(spec: ImageSpec): Sprite
+---@overload fun(otherSprite: Sprite): Sprite
+---@overload fun(table: { fromFile: string, oneFrame?: any }): Sprite
+function Sprite() end
 
 ---@class (exact) Tag https://www.aseprite.org/api/tag
 ---@field sprite Sprite
@@ -962,9 +962,9 @@ Tileset = {}
 ---@field isRunning boolean
 Timer = {}
 
-    ---@return Timer
-    ---@overload fun(table: { interval: number, ontick: fun() }): Timer
-    function Timer() end
+---@return Timer
+---@overload fun(table: { interval: number, ontick: fun() }): Timer
+function Timer() end
 
 ---@class (exact) Tool https://www.aseprite.org/api/tool
 ---@field id string
@@ -984,9 +984,9 @@ TouchEvent = {}
 ---@field prereleaseNumber number
 Version = {}
 
-    ---@return Version 
-    ---@param version string
-    function Version(version) end
+---@return Version
+---@param version string
+function Version(version) end
 
 ---@class (exact) WebSocket https://www.aseprite.org/api/websocket
 ---@field url string
@@ -997,9 +997,9 @@ Version = {}
 ---@field sendPing fun(webSocket: WebSocket, str: string): string
 WebSocket = {}
 
-    ---@return WebSocket
-    ---@overload fun(table: { url: string, onreceive: fun(message: string, data: any), deflate: boolean, minreconnectwait: number, maxreconnectwait: number }): WebSocket
-    function WebSocket() end
+---@return WebSocket
+---@overload fun(table: { url: string, onreceive: fun(message: string, data: any), deflate: boolean, minreconnectwait: number, maxreconnectwait: number }): WebSocket
+function WebSocket() end
 
 ---@class (exact) Window https://www.aseprite.org/api/window
 ---@field width number
