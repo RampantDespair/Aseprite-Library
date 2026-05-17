@@ -775,7 +775,7 @@ fileLoadTable = {}
 ---@field file file*
 ---@field fileName string
 ---@field sprite Sprite
-fileSavTable = {}
+fileSaveTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
