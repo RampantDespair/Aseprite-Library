@@ -735,6 +735,7 @@ function Palette() end
 ---@field newCommand fun(plugin: Plugin, args: newCommandTable)
 ---@field newMenuGroup fun(plugin: Plugin, args: newMenuGroupTable)
 ---@field newMenuSeparator fun(plugin: Plugin, args: newMenuSeparatorTable)
+---@field newFileFormat fun(plugin: Plugin, args: newFileFormatTable)
 Plugin = {}
 
 ---@class (exact) newCommandTable
@@ -754,6 +755,27 @@ newMenuGroupTable = {}
 ---@class (exact) newMenuSeparatorTable
 ---@field group string
 newMenuSeparatorTable = {}
+
+---@class (exact) newFileFormatTable
+---@field binary boolean
+---@field suports integer
+---@field extension string|string[]
+---@field extensions string|string[]
+---@field name string
+---@field onload fun(ev: fileLoadTable): boolean
+---@field onsave fun(ev: fileSaveTable): boolean
+
+newFileFormatTable = {}
+---@class (exact) fileLoadTable
+---@field file file*
+---@field fileName string
+fileLoadTable = {}
+
+---@class (exact) fileSaveTable
+---@field file file*
+---@field fileName string
+---@field sprite Sprite
+fileSavTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
