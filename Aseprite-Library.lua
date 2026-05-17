@@ -764,8 +764,8 @@ newMenuSeparatorTable = {}
 ---@field name string
 ---@field onload fun(ev: fileLoadTable): boolean
 ---@field onsave fun(ev: fileSaveTable): boolean
-
 newFileFormatTable = {}
+
 ---@class (exact) fileLoadTable
 ---@field file file*
 ---@field fileName string
