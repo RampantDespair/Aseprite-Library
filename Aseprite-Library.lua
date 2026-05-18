@@ -449,6 +449,22 @@ WebSocketMessageType = {
     FRAGMENT = 6,
 }
 
+---@enum (exact) FormatSupport
+FormatSupport = {
+    RGB = 0x0004,
+    RGBA = 0x0008,
+    GRAY = 0x0010,
+    GRAYA = 0x0020,
+    INDEXED = 0x0040,
+    LAYER = 0x00080,
+    FRAME = 0x00100,
+    PALETTE = 0x2200, -- FILE_SUPPORT_PALETTES | FILE_SUPPORT_BIG_PALETTES
+    PALETTE_ALPHA = 0x4000,
+    DEFAULT = FormatSupport.RGB | FormatSupport.RGBA |
+        FormatSupport.GRAY | FormatSupport.GRAYA |
+        FormatSupport.INDEXED
+}
+
 -- Classes/objects
 
 ---@class (exact) Brush https://www.aseprite.org/api/brush
@@ -735,6 +751,7 @@ function Palette() end
 ---@field newCommand fun(plugin: Plugin, args: newCommandTable)
 ---@field newMenuGroup fun(plugin: Plugin, args: newMenuGroupTable)
 ---@field newMenuSeparator fun(plugin: Plugin, args: newMenuSeparatorTable)
+---@field newFileFormat fun(plugin: Plugin, args: newFileFormatTable)
 Plugin = {}
 
 ---@class (exact) newCommandTable
@@ -754,6 +771,37 @@ newMenuGroupTable = {}
 ---@class (exact) newMenuSeparatorTable
 ---@field group string
 newMenuSeparatorTable = {}
+
+---@class (exact) newFileFormatTable
+---@field binary boolean
+---@field suports integer
+---@field extension string|string[]
+---@field extensions string|string[]
+---@field name string
+---@field onload fun(ev: fileLoadTable): Sprite|false
+---@field onsave fun(ev: fileSaveTable): boolean
+newFileFormatTable = {}
+
+---@class (exact) fileLoadTable
+---@field file file*
+---@field fileName string
+fileLoadTable = {}
+
+---@class (exact) fileSaveTable
+---@field file file*
+---@field fileName string
+---@field sprite Sprite
+---@field options saveOptionsTable
+fileSaveTable = {}
+
+---@class (exact) saveOptionsTable
+---@field canvasSize Size
+---@field bounds Rectangle
+---@field frames integer
+---@field fromFrame integer
+---@field toFrame integer
+---@field ignoreEmptyFrames boolean
+saveOptionsTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
