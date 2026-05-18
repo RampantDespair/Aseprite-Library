@@ -762,7 +762,7 @@ newMenuSeparatorTable = {}
 ---@field extension string|string[]
 ---@field extensions string|string[]
 ---@field name string
----@field onload fun(ev: fileLoadTable): boolean
+---@field onload fun(ev: fileLoadTable): boolean|Sprite
 ---@field onsave fun(ev: fileSaveTable): boolean
 newFileFormatTable = {}
 
@@ -775,7 +775,17 @@ fileLoadTable = {}
 ---@field file file*
 ---@field fileName string
 ---@field sprite Sprite
+---@field options saveOptionsTable
 fileSaveTable = {}
+
+---@class (exact) saveOptionsTable
+---@field canvasSize Size
+---@field bounds Rectangle
+---@field frames integer
+---@field fromFrame integer
+---@field toFrame integer
+---@field ignoreEmptyFrames boolean
+saveOptionsTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
