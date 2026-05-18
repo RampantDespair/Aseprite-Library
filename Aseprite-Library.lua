@@ -464,6 +464,7 @@ FormatSupport = {
         FormatSupport.GRAY | FormatSupport.GRAYA |
         FormatSupport.INDEXED
 }
+
 -- Classes/objects
 
 ---@class (exact) Brush https://www.aseprite.org/api/brush
