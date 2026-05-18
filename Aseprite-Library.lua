@@ -449,27 +449,21 @@ WebSocketMessageType = {
     FRAGMENT = 6,
 }
 
----@enum (exact) FiletypeSupportFlags Used for newFileFormatTable.supports
-FileSupportFlags = {
-    FILE_SUPPORT_LOAD = 0x00000001,
-    FILE_SUPPORT_SAVE = 0x00000002,
-    FILE_SUPPORT_RGB = 0x00000004,
-    FILE_SUPPORT_RGBA = 0x00000008,
-    FILE_SUPPORT_GRAY = 0x00000010,
-    FILE_SUPPORT_GRAYA = 0x00000020,
-    FILE_SUPPORT_INDEXED = 0x00000040,
-    FILE_SUPPORT_LAYERS = 0x00000080,
-    FILE_SUPPORT_FRAMES = 0x00000100,
-    FILE_SUPPORT_PALETTES = 0x00000200,
-    FILE_SUPPORT_SEQUENCES = 0x00000400,
-    FILE_SUPPORT_GET_FORMAT_OPTIONS = 0x00000800,
-    FILE_SUPPORT_TAGS = 0x00001000,
-    FILE_SUPPORT_BIG_PALETTES = 0x00002000,
-    FILE_SUPPORT_PALETTE_WITH_ALPHA = 0x00004000,
-    FILE_ENCODE_ABSTRACT_IMAGE = 0x00008000,
-    FILE_GIF_ANI_LIMITATIONS = 0x00010000,
+---@enum (exact) FormatSupport
+FormatSupport = {
+    RGB = 0x0004,
+    RGBA = 0x0008,
+    GRAY = 0x0010,
+    GRAYA = 0x0020,
+    INDEXED = 0x0040,
+    LAYER = 0x00080,
+    FRAME = 0x00100,
+    PALETTE = 0x2200, -- FILE_SUPPORT_PALETTES | FILE_SUPPORT_BIG_PALETTES
+    PALETTE_ALPHA = 0x4000,
+    DEFAULT = FormatSupport.RGB | FormatSupport.RGBA |
+        FormatSupport.GRAY | FormatSupport.GRAYA |
+        FormatSupport.INDEXED
 }
-
 -- Classes/objects
 
 ---@class (exact) Brush https://www.aseprite.org/api/brush
