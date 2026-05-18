@@ -762,7 +762,7 @@ newMenuSeparatorTable = {}
 ---@field extension string|string[]
 ---@field extensions string|string[]
 ---@field name string
----@field onload fun(ev: fileLoadTable): boolean|Sprite
+---@field onload fun(ev: fileLoadTable): Sprite|false
 ---@field onsave fun(ev: fileSaveTable): boolean
 newFileFormatTable = {}
 
