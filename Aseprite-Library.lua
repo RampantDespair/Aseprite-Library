@@ -633,6 +633,7 @@ GraphicsContext = {}
 ---@field colorMode ColorMode
 ---@field spec ImageSpec
 ---@field cel Cel
+---@field context GraphicsContext
 ---@field bytes string
 ---@field rowStride number
 ---@field bytesPerPixel number
