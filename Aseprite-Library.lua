@@ -60,7 +60,7 @@ app = {}
 ---@field clear fun()
 
 ---@class (exact) pixelColor https://www.aseprite.org/api/pixelcolor
----@field rgba fun(red: number, green: number, blue: number, alpha?: number): Color
+---@field rgba fun(red: number, green: number, blue: number, alpha?: number): integer
 ---@field rgbaR fun(rgbaPixelValue: any): integer
 ---@field rgbaG fun(rgbaPixelValue: any): integer
 ---@field rgbaB fun(rgbaPixelValue: any): integer
