@@ -760,7 +760,8 @@ Plugin = {}
 ---@field title string
 ---@field group string
 ---@field onclick fun()
----@field onenabled fun(): boolean
+---@field onenabled? fun(): boolean
+---@field onchecked? fun(): boolean
 newCommandTable = {}
 
 ---@class (exact) newMenuGroupTable
