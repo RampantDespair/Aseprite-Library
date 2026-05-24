@@ -68,7 +68,7 @@ app = {}
 ---@field graya fun(gray: number, alpha?: number): integer
 ---@field grayaV fun(grayPixelValue: any): integer
 ---@field grayaA fun(grayPixelValue: any): integer
-pixelColor = {}
+local pixelColor = {}
 
 ---@class (exact) command https://www.aseprite.org/api/app_command
 ---@field About fun()
@@ -226,12 +226,12 @@ pixelColor = {}
 ---@field Undo fun()
 ---@field UnlinkCel fun()
 ---@field Zoom fun()
-command = {}
+local command = {}
 
 ---@class (exact) preferences https://www.aseprite.org/api/app_preferences
 ---@field tool fun(tool: Tool): any
 ---@field document fun(sprite: Sprite): any
-preferences = {}
+local preferences = {}
 
 ---@class (exact) fs https://www.aseprite.org/api/app_fs
 ---@field pathSeparator string
@@ -254,13 +254,13 @@ preferences = {}
 ---@field makeDirectory fun(path: string): boolean
 ---@field makeAllDirectories fun(path: string): boolean
 ---@field removeDirectory fun(path: string): boolean
-fs = {}
+local fs = {}
 
 ---@class (exact) theme https://www.aseprite.org/api/app_theme
 ---@field color Color
 ---@field dimension number
 ---@field styleMetrics fun(theme: theme, style_id: string): any
-theme = {}
+local theme = {}
 
 ---@class (exact) json https://www.aseprite.org/api/json
 ---@field decode fun(jsonText: string): any
@@ -496,7 +496,7 @@ function Brush() end
 ---@field color Color
 ---@field data string
 ---@field properties Properties
-Cel = {}
+local Cel = {}
 
 ---@class (exact) Color https://www.aseprite.org/api/color
 ---@field alpha number
@@ -590,7 +590,7 @@ Events = {}
 ---@field duration number
 ---@field previous Frame
 ---@field next Frame
-Frame = {}
+local Frame = {}
 
 ---@class (exact) GraphicsContext https://www.aseprite.org/api/graphicscontext
 ---@field width number
@@ -728,7 +728,7 @@ Layer = {}
 ---@field ctrlKey boolean
 ---@field shiftKey boolean
 ---@field spaceKey boolean
-MouseEvent = {}
+local MouseEvent = {}
 
 ---@class (exact) Palette https://www.aseprite.org/api/palette
 ---@field resize fun(palette: Palette, ncolors: number)
@@ -762,17 +762,17 @@ Plugin = {}
 ---@field onclick fun()
 ---@field onenabled? fun(): boolean
 ---@field onchecked? fun(): boolean
-newCommandTable = {}
+local newCommandTable = {}
 
 ---@class (exact) newMenuGroupTable
 ---@field id string
 ---@field title string
 ---@field group string
-newMenuGroupTable = {}
+local newMenuGroupTable = {}
 
 ---@class (exact) newMenuSeparatorTable
 ---@field group string
-newMenuSeparatorTable = {}
+local newMenuSeparatorTable = {}
 
 ---@class (exact) newFileFormatTable
 ---@field binary boolean
@@ -782,19 +782,19 @@ newMenuSeparatorTable = {}
 ---@field name string
 ---@field onload fun(ev: fileLoadTable): Sprite|false
 ---@field onsave fun(ev: fileSaveTable): boolean
-newFileFormatTable = {}
+local newFileFormatTable = {}
 
 ---@class (exact) fileLoadTable
 ---@field file file*
 ---@field fileName string
-fileLoadTable = {}
+local fileLoadTable = {}
 
 ---@class (exact) fileSaveTable
 ---@field file file*
 ---@field fileName string
 ---@field sprite Sprite
 ---@field options saveOptionsTable
-fileSaveTable = {}
+local fileSaveTable = {}
 
 ---@class (exact) saveOptionsTable
 ---@field canvasSize Size
@@ -803,7 +803,7 @@ fileSaveTable = {}
 ---@field fromFrame integer
 ---@field toFrame integer
 ---@field ignoreEmptyFrames boolean
-saveOptionsTable = {}
+local saveOptionsTable = {}
 
 ---@class (exact) Point https://www.aseprite.org/api/point
 ---@field x number
@@ -818,7 +818,7 @@ Point = {}
 function Point() end
 
 ---@class (exact) Properties https://www.aseprite.org/api/properties
-Properties = {}
+local Properties = {}
 
 ---@class (exact) Range https://www.aseprite.org/api/range
 ---@field type RangeType
@@ -885,7 +885,7 @@ function Selection() end
 ---@field frame Frame
 ---@field frameNumber number
 ---@field image Image
-Site = {}
+local Site = {}
 
 ---@class (exact) Size https://www.aseprite.org/api/size
 ---@field width number
@@ -912,7 +912,7 @@ function Size() end
 ---@field name string
 ---@field pivot Point
 ---@field sprite Sprite
-Slice = {}
+local Slice = {}
 
 ---@class (exact) Sprite https://www.aseprite.org/api/sprite
 ---@field width number
@@ -984,7 +984,7 @@ function Sprite() end
 ---@field repeats number
 ---@field data string
 ---@field properties Properties
-Tag = {}
+local Tag = {}
 
 ---@class (exact) Tile https://www.aseprite.org/api/tile
 ---@field index number
@@ -992,7 +992,7 @@ Tag = {}
 ---@field color Color
 ---@field data string
 ---@field properties Properties
-Tile = {}
+local Tile = {}
 
 ---@class (exact) Tileset https://www.aseprite.org/api/tileset
 ---@field name string
@@ -1018,13 +1018,13 @@ function Timer() end
 
 ---@class (exact) Tool https://www.aseprite.org/api/tool
 ---@field id string
-Tool = {}
+local Tool = {}
 
 ---@class (exact) TouchEvent https://www.aseprite.org/api/touchevent
 ---@field x number
 ---@field y number
 ---@field magnification number
-TouchEvent = {}
+local TouchEvent = {}
 
 ---@class (exact) Version https://www.aseprite.org/api/version
 ---@field major number
@@ -1055,7 +1055,7 @@ function WebSocket() end
 ---@field width number
 ---@field height number
 ---@field events Events
-Window = {}
+local Window = {}
 
 -- Scripting
 ---@param plugin Plugin
