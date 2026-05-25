@@ -784,12 +784,12 @@ newFileFormatTable = {}
 
 ---@class (exact) fileLoadTable
 ---@field file file*
----@field fileName string
+---@field filename string
 fileLoadTable = {}
 
 ---@class (exact) fileSaveTable
 ---@field file file*
----@field fileName string
+---@field filename string
 ---@field sprite Sprite
 ---@field options saveOptionsTable
 fileSaveTable = {}
