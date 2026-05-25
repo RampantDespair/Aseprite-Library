@@ -775,7 +775,7 @@ newMenuSeparatorTable = {}
 
 ---@class (exact) newFileFormatTable
 ---@field binary boolean
----@field suports integer
+---@field supports integer
 ---@field extension string|string[]
 ---@field extensions string|string[]
 ---@field name string
@@ -785,12 +785,12 @@ newFileFormatTable = {}
 
 ---@class (exact) fileLoadTable
 ---@field file file*
----@field fileName string
+---@field filename string
 fileLoadTable = {}
 
 ---@class (exact) fileSaveTable
 ---@field file file*
----@field fileName string
+---@field filename string
 ---@field sprite Sprite
 ---@field options saveOptionsTable
 fileSaveTable = {}
