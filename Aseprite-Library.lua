@@ -774,7 +774,7 @@ newMenuSeparatorTable = {}
 
 ---@class (exact) newFileFormatTable
 ---@field binary boolean
----@field suports integer
+---@field supports integer
 ---@field extension string|string[]
 ---@field extensions string|string[]
 ---@field name string
