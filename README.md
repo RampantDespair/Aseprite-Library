@@ -36,6 +36,8 @@ With that in mind, this lua library lets view functions and fields on your proje
 
 Reddit thread: [[Release] Two Aseprite Projects: Script Development Library & Feature-Rich Extension](https://www.reddit.com/r/aseprite/comments/1i94hds/release_two_aseprite_projects_script_development/)
 
+Itch.io page: [Aseprite Library by CrashTestJava](https://crashtestjava.itch.io/aseprite-library) big thanks to [@CrashTestJava](https://github.com/CrashTestJava)
+
 <!-- INSTALLATION -->
 
 ## Installation
