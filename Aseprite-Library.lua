@@ -38,7 +38,7 @@
 ---@field undo fun()
 ---@field redo fun()
 ---@field useTool fun(table: {tool: string | Tool, color?: Color, bgColor?: Color, brush?: Brush, points?: Point[], cel?: Cel, layer?: Layer, frame?: Frame, ink?: Ink, button?: MouseButton, opacity?: integer, contiguous?: boolean, tolerance?: integer, freehandAlgorithm?: 0 | 1, selection?: SelectionMode, tilemapMode?: TilemapMode, tilesetMode?: TilesetMode})
----@field events Events
+---@field events AppEvents
 ---@field clipboard Clipboard
 -- @deprecated
 ---@field activeSprite Sprite | nil
@@ -160,7 +160,7 @@ pixelColor = {}
 ---@field NewLayer fun(table?: { name: string, group: boolean, reference: boolean, tilemap: boolean, gridBounds: Rectangle, ask: boolean, fromFile: boolean, fromClipboard: boolean, viaCut: boolean, viaCopy: boolean, top: boolean, before: boolean }) https://www.aseprite.org/api/command/NewLayer
 ---@field NewSpriteFromSelection fun()
 ---@field OpenBrowser fun()
----@field OpenFile fun()
+---@field OpenFile fun(table?: {ui: boolean, filename : string, folder : string, repeat_checkbox : boolean, oneframe : boolean, sequence : string}) https://www.aseprite.org/api/command/OpenFile
 ---@field OpenGroup fun()
 ---@field OpenInFolder fun()
 ---@field OpenScriptFolder fun()
@@ -256,10 +256,14 @@ preferences = {}
 ---@field removeDirectory fun(path: string): boolean
 fs = {}
 
+
+---@class StyleMetrics https://www.aseprite.org/api/app_theme#appthemestylemetrics
+---@field border {left : number, top : number, right: number, bottom : number}
+
 ---@class (exact) theme https://www.aseprite.org/api/app_theme
----@field color Color
----@field dimension number
----@field styleMetrics fun(theme: theme, style_id: string): any
+---@field color ThemeColors
+---@field dimension ThemeDimensions
+---@field styleMetrics fun(theme: theme, style_id: string): StyleMetrics
 theme = {}
 
 ---@class (exact) json https://www.aseprite.org/api/json
@@ -425,6 +429,335 @@ SpriteSheetType = {
     PACKED = 4,
 }
 
+---@alias ThemeImage string
+---| 'cursor_normal'
+---| 'cursor_normal_add'
+---| 'cursor_crosshair'
+---| 'cursor_forbidden'
+---| 'cursor_hand'
+---| 'cursor_scroll'
+---| 'cursor_move'
+---| 'cursor_move_selection'
+---| 'cursor_size_ns'
+---| 'cursor_size_we'
+---| 'cursor_size_n'
+---| 'cursor_size_ne'
+---| 'cursor_size_e'
+---| 'cursor_size_se'
+---| 'cursor_size_s'
+---| 'cursor_size_sw'
+---| 'cursor_size_w'
+---| 'cursor_size_nw'
+---| 'cursor_rotate_n'
+---| 'cursor_rotate_ne'
+---| 'cursor_rotate_e'
+---| 'cursor_rotate_se'
+---| 'cursor_rotate_s'
+---| 'cursor_rotate_sw'
+---| 'cursor_rotate_w'
+---| 'cursor_rotate_nw'
+---| 'cursor_eyedropper'
+---| 'cursor_magnifier'
+---| 'radio_normal'
+---| 'radio_selected'
+---| 'radio_disabled'
+---| 'check_normal'
+---| 'check_selected'
+---| 'check_disabled'
+---| 'check_focus'
+---| 'radio_focus'
+---| 'button_normal'
+---| 'button_hot'
+---| 'button_focused'
+---| 'button_selected'
+---| 'sunken_normal'
+---| 'sunken_focused'
+---| 'sunken2_normal'
+---| 'sunken2_focused'
+---| 'sunken_mini_normal'
+---| 'sunken_mini_focused'
+---| 'window'
+---| 'menu'
+---| 'window_button_normal'
+---| 'window_button_hot'
+---| 'window_button_selected'
+---| 'window_close_icon'
+---| 'window_play_icon'
+---| 'window_stop_icon'
+---| 'window_center_icon'
+---| 'slider_full'
+---| 'slider_empty'
+---| 'slider_full_focused'
+---| 'slider_empty_focused'
+---| 'mini_slider_full'
+---| 'mini_slider_empty'
+---| 'mini_slider_full_focused'
+---| 'mini_slider_empty_focused'
+---| 'mini_slider_thumb'
+---| 'mini_slider_thumb_focused'
+---| 'separator_horz'
+---| 'separator_vert'
+---| 'combobox_arrow_down'
+---| 'combobox_arrow_down_selected'
+---| 'combobox_arrow_down_disabled'
+---| 'combobox_arrow_up'
+---| 'combobox_arrow_up_selected'
+---| 'combobox_arrow_up_disabled'
+---| 'combobox_arrow_left'
+---| 'combobox_arrow_left_selected'
+---| 'combobox_arrow_left_disabled'
+---| 'combobox_arrow_right'
+---| 'combobox_arrow_right_selected'
+---| 'combobox_arrow_right_disabled'
+---| 'arrow_circle_cw'
+---| 'arrow_circle_cw_selected'
+---| 'newfolder'
+---| 'newfolder_selected'
+---| 'list_view'
+---| 'small_icon_view'
+---| 'big_icon_view'
+---| 'toolbutton_normal'
+---| 'toolbutton_hot'
+---| 'toolbutton_last'
+---| 'toolbutton_pushed'
+---| 'buttonset_item_normal'
+---| 'buttonset_item_hot'
+---| 'buttonset_item_hot_focused'
+---| 'buttonset_item_focused'
+---| 'buttonset_item_pushed'
+---| 'tab_normal'
+---| 'tab_active'
+---| 'tab_bottom_active'
+---| 'tab_bottom_normal'
+---| 'tab_filler'
+---| 'tab_modified_icon_normal'
+---| 'tab_modified_icon_active'
+---| 'tab_close_icon_normal'
+---| 'tab_close_icon_active'
+---| 'tab_icon_bg_clicked'
+---| 'tab_icon_bg_hover'
+---| 'tab_home_icon_normal'
+---| 'tab_home_icon_active'
+---| 'editor_normal'
+---| 'editor_selected'
+---| 'colorbar_0'
+---| 'colorbar_1'
+---| 'colorbar_2'
+---| 'colorbar_3'
+---| 'colorbar_selection_hot'
+---| 'colorbar_selection'
+---| 'scrollbar_bg'
+---| 'scrollbar_thumb'
+---| 'mini_scrollbar_bg'
+---| 'mini_scrollbar_thumb'
+---| 'mini_scrollbar_bg_hot'
+---| 'mini_scrollbar_thumb_hot'
+---| 'transparent_scrollbar_bg'
+---| 'transparent_scrollbar_thumb'
+---| 'transparent_scrollbar_bg_hot'
+---| 'transparent_scrollbar_thumb_hot'
+---| 'tooltip'
+---| 'tooltip_arrow'
+---| 'ani_first'
+---| 'ani_previous'
+---| 'ani_play'
+---| 'ani_stop'
+---| 'ani_next'
+---| 'ani_last'
+---| 'pal_sort'
+---| 'pal_presets'
+---| 'pal_options'
+---| 'pal_resize'
+---| 'debug_continue'
+---| 'debug_pause'
+---| 'debug_step_into'
+---| 'debug_step_over'
+---| 'debug_step_out'
+---| 'debug_breakpoint'
+---| 'selection_replace'
+---| 'selection_add'
+---| 'selection_subtract'
+---| 'selection_intersect'
+---| 'unpinned'
+---| 'pinned'
+---| 'drop_down_button_left_normal'
+---| 'drop_down_button_left_hot'
+---| 'drop_down_button_left_focused'
+---| 'drop_down_button_left_selected'
+---| 'drop_down_button_right_normal'
+---| 'drop_down_button_right_hot'
+---| 'drop_down_button_right_focused'
+---| 'drop_down_button_right_selected'
+---| 'transformation_handle'
+---| 'pivot_handle'
+---| 'timeline_none'
+---| 'timeline_normal'
+---| 'timeline_active'
+---| 'timeline_hover'
+---| 'timeline_active_hover'
+---| 'timeline_clicked'
+---| 'timeline_open_eye_normal'
+---| 'timeline_open_eye_active'
+---| 'timeline_closed_eye_normal'
+---| 'timeline_closed_eye_active'
+---| 'timeline_open_padlock_normal'
+---| 'timeline_open_padlock_active'
+---| 'timeline_closed_padlock_normal'
+---| 'timeline_closed_padlock_active'
+---| 'timeline_continuous_normal'
+---| 'timeline_continuous_active'
+---| 'timeline_discontinuous_normal'
+---| 'timeline_discontinuous_active'
+---| 'timeline_closed_group_normal'
+---| 'timeline_closed_group_active'
+---| 'timeline_open_group_normal'
+---| 'timeline_open_group_active'
+---| 'timeline_empty_frame_normal'
+---| 'timeline_empty_frame_active'
+---| 'timeline_keyframe_normal'
+---| 'timeline_keyframe_active'
+---| 'timeline_from_left_normal'
+---| 'timeline_from_left_active'
+---| 'timeline_from_right_normal'
+---| 'timeline_from_right_active'
+---| 'timeline_from_both_normal'
+---| 'timeline_from_both_active'
+---| 'timeline_left_link_active'
+---| 'timeline_both_links_active'
+---| 'timeline_right_link_active'
+---| 'timeline_gear'
+---| 'timeline_gear_active'
+---| 'timeline_onionskin'
+---| 'timeline_onionskin_active'
+---| 'timeline_onionskin_range'
+---| 'timeline_padding'
+---| 'timeline_padding_tr'
+---| 'timeline_padding_bl'
+---| 'timeline_padding_br'
+---| 'timeline_drop_layer_deco'
+---| 'timeline_drop_frame_deco'
+---| 'timeline_loop_range'
+---| 'timeline_focused'
+---| 'flag_normal'
+---| 'flag_highlight'
+---| 'drop_pixels_ok'
+---| 'drop_pixels_ok_selected'
+---| 'drop_pixels_cancel'
+---| 'drop_pixels_cancel_selected'
+---| 'warning_box'
+---| 'canvas_nw'
+---| 'canvas_n'
+---| 'canvas_ne'
+---| 'canvas_w'
+---| 'canvas_c'
+---| 'canvas_e'
+---| 'canvas_sw'
+---| 'canvas_s'
+---| 'canvas_se'
+---| 'canvas_empty'
+---| 'ink_simple'
+---| 'ink_alpha_compositing'
+---| 'ink_copy_color'
+---| 'ink_lock_alpha'
+---| 'ink_shading'
+---| 'selection_opaque'
+---| 'selection_masked'
+---| 'pivot_northwest'
+---| 'pivot_north'
+---| 'pivot_northeast'
+---| 'pivot_west'
+---| 'pivot_center'
+---| 'pivot_east'
+---| 'pivot_southwest'
+---| 'pivot_south'
+---| 'pivot_southeast'
+---| 'icon_rgb'
+---| 'icon_grayscale'
+---| 'icon_indexed'
+---| 'icon_black'
+---| 'icon_white'
+---| 'icon_transparent'
+---| 'color_wheel_indicator'
+---| 'no_symmetry'
+---| 'horizontal_symmetry'
+---| 'vertical_symmetry'
+---| 'icon_arrow_down'
+---| 'icon_close'
+---| 'icon_search'
+---| 'icon_user_data'
+---| 'icon_pos'
+---| 'icon_size'
+---| 'icon_selsize'
+---| 'icon_frame'
+---| 'icon_clock'
+---| 'icon_start'
+---| 'icon_end'
+---| 'icon_angle'
+---| 'icon_key'
+---| 'icon_distance'
+---| 'icon_grid'
+---| 'icon_save'
+---| 'icon_save_small'
+---| 'icon_slice'
+---| 'icon_aspect_ratio'
+---| 'icon_delta'
+---| 'tool_rectangular_marquee'
+---| 'tool_elliptical_marquee'
+---| 'tool_lasso'
+---| 'tool_polygonal_lasso'
+---| 'tool_magic_wand'
+---| 'tool_pencil'
+---| 'tool_spray'
+---| 'tool_eraser'
+---| 'tool_eyedropper'
+---| 'tool_hand'
+---| 'tool_move'
+---| 'tool_zoom'
+---| 'tool_slice'
+---| 'tool_paint_bucket'
+---| 'tool_gradient'
+---| 'tool_line'
+---| 'tool_curve'
+---| 'tool_rectangle'
+---| 'tool_filled_rectangle'
+---| 'tool_ellipse'
+---| 'tool_filled_ellipse'
+---| 'tool_contour'
+---| 'tool_polygon'
+---| 'tool_blur'
+---| 'tool_jumble'
+---| 'tool_configuration'
+---| 'tool_minieditor'
+---| 'simple_color_border'
+---| 'simple_color_selected'
+---| 'aseprite_face'
+---| 'aseprite_face_mouse'
+---| 'aseprite_face_pushed'
+---| 'linear_gradient'
+---| 'radial_gradient'
+---| 'folder_icon_small'
+---| 'folder_icon_big'
+---| 'folder_icon_medium'
+---| 'outline_circle'
+---| 'outline_square'
+---| 'outline_horizontal'
+---| 'outline_vertical'
+---| 'outline_empty_pixel'
+---| 'outline_full_pixel'
+---| 'dynamics'
+---| 'tiles'
+---| 'tiles_manual'
+---| 'tiles_auto'
+---| 'tiles_stack'
+---| 'cursor_skew_n'
+---| 'cursor_skew_s'
+---| 'cursor_skew_sw'
+---| 'cursor_skew_se'
+---| 'cursor_skew_w'
+---| 'cursor_skew_e'
+---| 'cursor_skew_nw'
+---| 'cursor_skew_ne'
+
 ---@enum (exact) TilemapMode
 TilemapMode = {
     PIXELS = 0,
@@ -466,6 +799,12 @@ FormatSupport = {
 }
 
 -- Classes/objects
+
+---@class AppEvents : Events
+---@field on fun(events: AppEvents, eventName: 'sitechange' | 'beforesitechange' | 'fgcolorchange' | 'bgcolorchange' | 'beforecommand' | 'aftercommand' | string, function: fun(...: any)): any
+
+---@class BeforeCommandEvent : CommandEvent
+---@field stopPropagation fun(commandEvent: CommandEvent)
 
 ---@class (exact) Brush https://www.aseprite.org/api/brush
 ---@field type BrushType
@@ -539,6 +878,10 @@ ColorSpace = {}
 ---@overload fun(table: { fromFile: string }): ColorSpace
 function ColorSpace() end
 
+---@class (exact) CommandEvent
+---@field name string
+---@field params table
+
 ---@class (exact) Dialog https://www.aseprite.org/api/dialog
 ---@field button fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, focus: boolean, onclick: fun() })
 ---@field check fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, text: string, selected: boolean, onclick: fun() })
@@ -560,7 +903,7 @@ function ColorSpace() end
 ---@field tab fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, text: string, onclick: fun() })
 ---@field endtabs fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, selected: string, align: integer, onchange: fun() })
 ---@field file fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, label: string, title: string, open: boolean, save: boolean, filename: string | string[], filetypes: string[], onchange: fun() })
----@field canvas fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, width: integer, height: integer, autoscaling: boolean, onpaint: fun(ev: any), onkeydown: fun(ev: any), onkeyup: fun(ev: any), onmousemove: fun(ev: any), onmousedown: fun(ev: any), onmouseup: fun(ev: any), ondblclick: fun(ev: any), onwheel: fun(ev: any), ontouchmagnify: fun(ev: any) })
+---@field canvas fun(dialog: Dialog) | fun(dialog: Dialog, table: { id: string, width: integer, height: integer, autoscaling: boolean, onpaint: fun(ev: GraphicsContextEvent), onkeydown: fun(ev: KeyEvent), onkeyup: fun(ev: KeyEvent), onmousemove: fun(ev: MouseEvent), onmousedown: fun(ev: MouseEvent), onmouseup: fun(ev: MouseEvent), ondblclick: fun(ev: MouseEvent), onwheel: fun(ev: MouseEvent), ontouchmagnify: fun(ev: TouchEvent) })
 ---@field repaint fun(dialog: Dialog)
 Dialog = {}
 
@@ -609,7 +952,7 @@ Frame = {}
 ---@field fillText fun(graphicsContext: GraphicsContext, text: string, x: number, y: number)
 ---@field measureText fun(graphicsContext: GraphicsContext, text: string)
 ---@field drawImage fun(graphicsContext: GraphicsContext, image: Image, x: number, y: number) | fun(graphicsContext: GraphicsContext, image: Image, srcRect: Rectangle, dstRect: Rectangle) | fun(graphicsContext: GraphicsContext, image: Image, srcX: number, srcY: number, srcW: number, srcH: number, dstX: number, dstY: number, dstW: number, dstH: number)
----@field drawThemeImage fun(graphicsContext: GraphicsContext, partId: any, point: Point) | fun(graphicsContext: GraphicsContext, partId: any, x: number, y: number)
+---@field drawThemeImage fun(graphicsContext: GraphicsContext, partId: ThemeImage, point: Point) | fun(graphicsContext: GraphicsContext, partId: any, x: number, y: number)
 ---@field drawThemeRect fun(graphicsContext: GraphicsContext, partId: any, rectangle: Rectangle) | fun(graphicsContext: GraphicsContext, partId: any, x: number, y: number, w: number, h:number)
 ---@field beginPath fun(graphicsContext: GraphicsContext)
 ---@field closePath fun(graphicsContext: GraphicsContext)
@@ -622,6 +965,9 @@ Frame = {}
 ---@field stroke fun(graphicsContext: GraphicsContext)
 ---@field fill fun(graphicsContext: GraphicsContext)
 GraphicsContext = {}
+
+---@class (exact) GraphicsContextEvent
+---@field context GraphicsContext
 
 ---@class (exact) Image https://www.aseprite.org/api/image
 ---@field clone fun(image: Image): Image
@@ -761,6 +1107,7 @@ Plugin = {}
 ---@field group string
 ---@field onclick fun()
 ---@field onenabled fun(): boolean
+---@field onchecked fun(): boolean
 newCommandTable = {}
 
 ---@class (exact) newMenuGroupTable
@@ -960,8 +1307,9 @@ Slice = {}
 ---@field newTile fun(sprite: Sprite, tileset: Tileset, tileIndex?: number): Tile
 ---@field deleteTile fun(sprite: Sprite, tile: Tile) | fun(sprite: Sprite, tileset: Tileset, tileIndex: number)
 ---@field flatten fun(sprite: Sprite)
----@field events Events
+---@field events SpriteEvents
 ---@field tileManagementPlugin any
+---@field undoHistory undoHistory
 Sprite = {}
 
 ---@return Sprite
@@ -971,6 +1319,9 @@ Sprite = {}
 ---@overload fun(otherSprite: Sprite): Sprite
 ---@overload fun(table: { fromFile: string, oneFrame?: any }): Sprite
 function Sprite() end
+
+---@class SpriteEvents : Events
+---@field on fun(events: SpriteEvents, eventName: 'change' | 'filenamechange' | 'layerblendmode' | 'layername' | 'layeropacity' | 'layervisibility' | string, function: fun(...: any)): any
 
 ---@class (exact) Tag https://www.aseprite.org/api/tag
 ---@field sprite Sprite
@@ -984,6 +1335,110 @@ function Sprite() end
 ---@field data string
 ---@field properties Properties
 Tag = {}
+
+---@class (exact) ThemeColors https://www.aseprite.org/api/app_theme#appthemecolor
+---@field text Color
+---@field disabled Color
+---@field face Color
+---@field hot_face Color
+---@field selected Color
+---@field selected_text Color
+---@field separator_label Color
+---@field background Color
+---@field textbox_text Color
+---@field textbox_face Color
+---@field textbox_code_face Color
+---@field entry_suffix Color
+---@field link_text Color
+---@field link_hover Color
+---@field button_normal_text Color
+---@field button_hot_text Color
+---@field button_selected_text Color
+---@field check_hot_face Color
+---@field check_focus_face Color
+---@field radio_hot_face Color
+---@field radio_focus_face Color
+---@field menuitem_normal_text Color
+---@field menuitem_normal_face Color
+---@field menuitem_hot_text Color
+---@field menuitem_hot_face Color
+---@field menuitem_highlight_text Color
+---@field menuitem_highlight_face Color
+---@field window_face Color
+---@field window_titlebar_text Color
+---@field window_titlebar_face Color
+---@field editor_face Color
+---@field editor_sprite_border Color
+---@field editor_sprite_bottom_border Color
+---@field editor_view_face Color
+---@field listitem_normal_text Color
+---@field listitem_normal_face Color
+---@field listitem_selected_text Color
+---@field listitem_selected_face Color
+---@field slider_empty_text Color
+---@field slider_full_text Color
+---@field tab_normal_text Color
+---@field tab_active_text Color
+---@field tab_active_face Color
+---@field popup_window_border Color
+---@field tooltip_text Color
+---@field tooltip_face Color
+---@field filelist_even_row_text Color
+---@field filelist_even_row_face Color
+---@field filelist_odd_row_text Color
+---@field filelist_odd_row_face Color
+---@field filelist_selected_row_text Color
+---@field filelist_selected_row_face Color
+---@field filelist_disabled_row_text Color
+---@field workspace Color
+---@field workspace_text Color
+---@field workspace_link Color
+---@field workspace_link_hover Color
+---@field timeline_normal Color
+---@field timeline_normal_text Color
+---@field timeline_hover Color
+---@field timeline_hover_text Color
+---@field timeline_active Color
+---@field timeline_active_text Color
+---@field timeline_active_hover Color
+---@field timeline_active_hover_text Color
+---@field timeline_clicked Color
+---@field timeline_clicked_text Color
+---@field timeline_focused_text Color
+---@field timeline_padding Color
+---@field timeline_band_highlight Color
+---@field timeline_band_bg Color
+---@field status_bar_text Color
+---@field status_bar_face Color
+---@field flag_normal Color
+---@field flag_active Color
+---@field flag_clicked Color
+---@field select_box_ruler Color
+---@field select_box_grid Color
+---@field edit_pal_face Color
+---@field palette_entries_separator Color
+
+---@class (exact) ThemeDimensions https://www.aseprite.org/api/app_theme#appthemedimension
+---@field scrollbar_size number
+---@field mini_scrollbar_size number
+---@field tabs_width number
+---@field tabs_height number
+---@field tabs_bottom_height number
+---@field docked_tabs_height number
+---@field tabs_close_icon_width number
+---@field tabs_close_icon_height number
+---@field tabs_icon_width number
+---@field timeline_top_border number
+---@field timeline_tags_area_height number
+---@field timeline_outline_width number
+---@field palette_outline_width number
+---@field palette_entries_separator number
+---@field color_slider_height number
+---@field timeline_base_size number
+---@field color_bar_buttons_height number
+---@field context_bar_height number
+---@field brush_type_width number
+---@field color_selector_bar_size number
 
 ---@class (exact) Tile https://www.aseprite.org/api/tile
 ---@field index number
@@ -1024,6 +1479,10 @@ Tool = {}
 ---@field y number
 ---@field magnification number
 TouchEvent = {}
+
+---@class (exact) undoHistory https://www.aseprite.org/api/sprite#spriteundohistoryundosteps
+---@field undoSteps integer
+---@field redoSteps integer
 
 ---@class (exact) Version https://www.aseprite.org/api/version
 ---@field major number
