@@ -366,6 +366,95 @@ Ink = {
     SHADING = 4,
 }
 
+---@alias MenuGroup string
+---| 'edit_undo'
+---| 'edit_clipboard'
+---| 'edit_copy'
+---| 'edit_paste'
+---| 'edit_paste_special_new'
+---| 'edit_clear'
+---| 'edit_fill'
+---| 'edit_transform'
+---| 'edit_new'
+---| 'edit_fx'
+---| 'edit_insert'
+---| 'file_new'
+---| 'file_open'
+---| 'file_recent'
+---| 'file_recent_reopen'
+---| 'file_recent_list'
+---| 'file_recent_clear'
+---| 'file_save'
+---| 'file_close'
+---| 'file_export'
+---| 'file_export_1'
+---| 'file_export_2'
+---| 'file_export_last'
+---| 'file_import'
+---| 'file_import_1'
+---| 'file_scripts'
+---| 'file_app'
+---| 'sprite_properties'
+---| 'sprite_color'
+---| 'sprite_duplicate'
+---| 'sprite_size'
+---| 'sprite_transformation'
+---| 'sprite_crop'
+---| 'layer_properties'
+---| 'layer_new'
+---| 'layer_remove'
+---| 'layer_duplicate'
+---| 'layer_merge'
+---| 'cel_properties'
+---| 'cel_new'
+---| 'cel_delete'
+---| 'cel_animation'
+---| 'cel_frames'
+---| 'cel_popup_properties'
+---| 'cel_popup_edit'
+---| 'cel_popup_clear'
+---| 'cel_popup_links'
+---| 'cel_popup_new'
+---| 'select_simple'
+---| 'select_complex'
+---| 'select_files'
+---| 'view_new'
+---| 'view_extras'
+---| 'view_canvas_helpers'
+---| 'view_animation_helpers'
+---| 'view_controls'
+---| 'view_screen'
+---| 'help_readme'
+---| 'help_docs'
+---| 'help_news'
+---| 'help_enter_license'
+---| 'help_about'
+---| 'tab_close'
+---| 'document_tab_close'
+---| 'document_tab_view'
+---| 'document_tab_open'
+---| 'document_tab_path'
+---| 'layer_popup_properties'
+---| 'layer_popup_new'
+---| 'layer_popup_merge'
+---| 'frame_popup_properties'
+---| 'frame_popup_new'
+---| 'frame_popup_delete'
+---| 'frame_popup_loop'
+---| 'frame_popup_reverse'
+---| 'tag_popup_properties'
+---| 'tag_popup_delete'
+---| 'slice_popup_properties'
+---| 'slice_popup_duplicate'
+---| 'slice_popup_delete'
+---| 'palette_main'
+---| 'palette_view'
+---| 'palette_selector'
+---| 'palette_files'
+---| 'palette_generation'
+---| 'ink_types'
+---| 'ink_options'
+
 ---@enum (exact) MouseButton https://www.aseprite.org/api/mousebutton
 MouseButton = {
     NONE = 0,
@@ -987,7 +1076,7 @@ GraphicsContext = {}
 ---@field drawPixel fun(image: Image, x: number, y: number, color: Color)
 ---@field getPixel fun(image: Image, x: number, y: number): app.pixelColor
 ---@field drawImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
----@field drawSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
+---@field drawSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number | Frame, position?: Point)
 ---@field isEqual fun(imageA: Image, imageB: Image): boolean
 ---@field isEmpty fun(image: Image): boolean
 ---@field isPlain fun(image: Image, color: Color): boolean
@@ -1093,6 +1182,8 @@ function Palette() end
 
 ---@class (exact) Plugin https://www.aseprite.org/api/plugin
 ---@field name string
+---@field displayName string
+---@field version Version
 ---@field path string
 ---@field preferences table
 ---@field newCommand fun(plugin: Plugin, args: newCommandTable)
@@ -1104,7 +1195,7 @@ Plugin = {}
 ---@class (exact) newCommandTable
 ---@field id string
 ---@field title string
----@field group string
+---@field group MenuGroup
 ---@field onclick fun()
 ---@field onenabled fun(): boolean
 ---@field onchecked fun(): boolean
@@ -1310,6 +1401,10 @@ Slice = {}
 ---@field events SpriteEvents
 ---@field tileManagementPlugin any
 ---@field undoHistory undoHistory
+---@field isValid boolean
+---@field hasAssociatedFile boolean
+---@field colorSpace ColorSpace
+---@field useLayerUuids boolean
 Sprite = {}
 
 ---@return Sprite
