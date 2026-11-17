@@ -1081,7 +1081,7 @@ GraphicsContext = {}
 ---@field isEmpty fun(image: Image): boolean
 ---@field isPlain fun(image: Image, color: Color): boolean
 ---@field pixels (fun(image: Image): app.pixelColor[]) | (fun(image: Image, rectangle: Rectangle): app.pixelColor[])
----@field putPixel fun(image: Image, x: number, y: number, color: (Color | number))
+---@field putPixel fun(image: Image, x: number, y: number, color: (Color | integer))
 ---@field putImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
 ---@field putSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
 ---@field saveAs fun(image: Image, filename: string) | fun(image: Image, table: { filename: string, palette: Palette })
