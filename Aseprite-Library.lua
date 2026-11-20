@@ -112,7 +112,7 @@ pixelColor = {}
 ---@field Fill fun()
 ---@field FitScreen fun()
 ---@field FlattenLayers fun()
----@field Flip fun()
+---@field Flip fun(table: { target: string, orientation: string })
 ---@field FrameProperties fun()
 ---@field FrameTagProperties fun()
 ---@field FullscreenPreview fun()
@@ -149,14 +149,14 @@ pixelColor = {}
 ---@field MaskByColor fun()
 ---@field MaskContent fun()
 ---@field MergeDownLayer fun()
----@field ModifySelection fun()
+---@field ModifySelection fun(table: { ui: boolean, modifier: string, quantity: integer, brush: string })
 ---@field MoveCel fun()
 ---@field MoveColors fun(table: { before: number }) https://www.aseprite.org/api/command/MoveColors
 ---@field MoveMask fun(table: { target: "boundaries" | "content", wrap: boolean, direction: "left" | "right" | "up" | "down", units: "pixel" | "tile-width" | "tile-height" | "zoomed-pixel" | "zoomed-tile-width" | "zoomed-tile-height" | "viewport-width" | "viewport-height", quantity: number }) https://www.aseprite.org/api/command/MoveMask
 ---@field NewBrush fun()
 ---@field NewFile fun(table: { ui: boolean, width: number, height: number, colorMode: ColorMode, fromClipboard: boolean }) https://www.aseprite.org/api/command/NewFile
 ---@field NewFrameTag fun()
----@field NewFrame fun(table?: {content: "current" | "empty" | "cel" | "celcopies" | "cellinked"})
+---@field NewFrame fun(table?: { content: "current" | "empty" | "cel" | "celcopies" | "cellinked" })
 ---@field NewLayer fun(table?: { name: string, group: boolean, reference: boolean, tilemap: boolean, gridBounds: Rectangle, ask: boolean, fromFile: boolean, fromClipboard: boolean, viaCut: boolean, viaCopy: boolean, top: boolean, before: boolean }) https://www.aseprite.org/api/command/NewLayer
 ---@field NewSpriteFromSelection fun()
 ---@field OpenBrowser fun()
@@ -1072,7 +1072,7 @@ GraphicsContext = {}
 ---@field bytes string
 ---@field rowStride number
 ---@field bytesPerPixel number
----@field clear fun(image: Image, bounds: Rectangle, color: Color)
+---@field clear fun(image: Image, bounds?: Rectangle, color?: Color)
 ---@field drawPixel fun(image: Image, x: number, y: number, color: Color)
 ---@field getPixel fun(image: Image, x: number, y: number): app.pixelColor
 ---@field drawImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
@@ -1081,7 +1081,7 @@ GraphicsContext = {}
 ---@field isEmpty fun(image: Image): boolean
 ---@field isPlain fun(image: Image, color: Color): boolean
 ---@field pixels (fun(image: Image): app.pixelColor[]) | (fun(image: Image, rectangle: Rectangle): app.pixelColor[])
----@field putPixel fun(image: Image, x: number, y: number, color: Color)
+---@field putPixel fun(image: Image, x: number, y: number, color: (Color | integer))
 ---@field putImage fun(image: Image, sourceImage: Image, position?: Point, opacity?: number, blendMode?: BlendMode)
 ---@field putSprite fun(image: Image, sourceSprite: Sprite, frameNumber: number, position?: Point)
 ---@field saveAs fun(image: Image, filename: string) | fun(image: Image, table: { filename: string, palette: Palette })
@@ -1386,10 +1386,11 @@ Slice = {}
 ---@field newGroup fun(sprite: Sprite): Layer
 ---@field deleteLayer fun(sprite: Sprite, layer: Layer) | fun(sprite: Sprite, layerName: string)
 ---@field newFrame (fun(sprite: Sprite, frame: Frame): Frame) | (fun(sprite: Sprite, frameNumber: number): Frame)
----@field newEmptyFrame fun(sprite: Sprite, frameNumber: number): Frame
+---@field newEmptyFrame fun(sprite: Sprite, frameNumber?: number): Frame
 ---@field deleteFrame fun(sprite: Sprite, frame: Frame)
 ---@field newCel (fun(sprite: Sprite, layer: Layer, frame: Frame, image?: Image, position?: Point): Cel) | (fun(sprite: Sprite, layer: Layer, frameNumber: number, image?: Image, position?: Point): Cel)
 ---@field newTag fun(sprite: Sprite, fromFrameNumber: number, toFrameNumber: number): Tag
+---@field deleteCel fun(sprite: Sprite, cel: Cel) | fun(sprite: Sprite, layer: Layer, frame: Frame)
 ---@field deleteTag fun(sprite: Sprite, tag: Tag) | fun(sprite: Sprite, tagName: string)
 ---@field newSlice fun(sprite: Sprite) | fun(sprite: Sprite, rectangle: Rectangle): Slice
 ---@field deleteSlice fun(sprite: Sprite, slice: Slice) | fun(sprite: Sprite, sliceName: string)
